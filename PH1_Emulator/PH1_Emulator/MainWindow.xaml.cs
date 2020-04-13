@@ -39,14 +39,11 @@ namespace PH1_Emulator
             ThreadPH1.Start();
         }
 
-
-
         private void CyclicPH1()
         {
             while (true)
             {
                 DT_ThreadPH1 = DateTime.Now;
-
 
 
                 System.Threading.Thread.Sleep(1000);
@@ -56,6 +53,11 @@ namespace PH1_Emulator
             }
 
         }
+
+
+
+
+
 
     }
 }

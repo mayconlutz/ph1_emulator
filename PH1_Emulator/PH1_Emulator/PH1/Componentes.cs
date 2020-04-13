@@ -4,6 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*========================================================================================|
+|  Conjunto de Instruções                                                                 |
+|=========================================================================================|
+| Opcode2 | Opcode16 | Instrução | Comentário                   | Operação(RTL)           |
+|=========================================================================================|
+|  0000   |     0    |   NOP     | Nenhuma operação             |                         |
+|  0001   |     1    |   LDR end | Carrega valor no AC          | AC<- MEM[end]           |
+|  0010   |     2    |   STR end | Armazena AC na memória       | MEM[end] <- AC          |
+|  0011   |     3    |   ADD end | Soma                         | AC<- AC + MEM[end]      |
+|  0100   |     4    |   SUB end | Subtração                    | AC<- AC - MEM[end]      |
+|  0101   |     5    |   MUL end | Multiplicação                | AC<- AC* MEM[end]       |
+|  0110   |     6    |   DIV end | Divisão                      | AC<- AC / MEM[end]      |
+|  0111   |     7    |   NOT     | Negação lógica bit-a-bit     | AC<- !AC                |
+|  1000   |     8    |   AND end | E lógico bit-a-bit           | AC<- AC & MEM[end]      |
+|  1001   |     9    |   OR  end | OU lógico bit-a-bit          | AC<- AC | MEM[end]      |
+|  1010   |     A    |   XOR end | OU exclusivo bit-a-bit       | AC<- AC ^ MEM[end]      |
+|  1011   |     B    |   JMP end | Desvio incondicional         | PC<- end                |
+|  1100   |     C    |   JEQ end | Desvio se AC igual a zero    | Se AC==0 então PC<- end |
+|  1101   |     D    |   JG  end | Desvio se AC maior que zero  | Se AC>0 então PC<- end  |
+|  1110   |     E    |   JL  end | Desvio se AC menor que zero  | Se AC<0 então PC<- end  |
+|  1111   |     F    |   HLT     | Término da execução          |                         |
+|========================================================================================*/
+
 namespace PH1_Emulator.PH1
 {
     /// <summary>
@@ -211,6 +234,11 @@ namespace PH1_Emulator.PH1
 
         #endregion
 
+        //Falta testar as operações!
+        /// <summary>
+        /// ULA com oito operações 
+        /// </summary>
+        /// <param name="ULAop">add, sub, mul, div, not, and, or, xor</param>
         #region ULA
 
         public void ULA(typeULAop ULAop)
@@ -238,17 +266,23 @@ namespace PH1_Emulator.PH1
 
                     break;
                 case typeULAop.not:
-
-                    //BarramentoC = not BarramentoB;
+                    
+                    BarramentoC = (byte)~BarramentoB;
 
                     break;
                 case typeULAop.and:
 
+                    BarramentoC = (byte)(BarramentoB & BarramentoA);
+
                     break;
                 case typeULAop.or:
 
+                    BarramentoC = (byte)(BarramentoB | BarramentoA);
+
                     break;
                 case typeULAop.xor:
+
+                    BarramentoC = (byte)(BarramentoB ^ BarramentoA);
 
                     break;
                 default:
@@ -259,6 +293,57 @@ namespace PH1_Emulator.PH1
         }
 
         #endregion
+
+        ///Decodifica o OPCODE que são os 4 bits mais significantes do byte no barramento RI - (0000 0000)
+        ///----------------------------------------------------------------------------------- (OPCODE 0000)
+        #region Decodificador
+
+        public typeInstrutions PH1_Decoder(byte InByte)
+        {
+            switch (InByte)
+            {
+                case 0x00:
+                    return typeInstrutions.NOP;
+                case 0x10:
+                    return typeInstrutions.LDR_end;
+                case 0x20:
+                    return typeInstrutions.STR_end;
+                case 0x30:
+                    return typeInstrutions.ADD_end;
+                case 0x40:
+                    return typeInstrutions.SUB_end;
+                case 0x50:
+                    return typeInstrutions.MUL_end;
+                case 0x60:
+                    return typeInstrutions.DIV_end;
+                case 0x70:
+                    return typeInstrutions.NOT;
+                case 0x80:
+                    return typeInstrutions.AND_end;
+                case 0x90:
+                    return typeInstrutions.OR_end;
+                case 0xA0:
+                    return typeInstrutions.XOR_end;
+                case 0xB0:
+                    return typeInstrutions.JMP_end;
+                case 0xC0:
+                    return typeInstrutions.JEQ_end;
+                case 0xD0:
+                    return typeInstrutions.JG_end;
+                case 0xE0:
+                    return typeInstrutions.JL_end;
+                case 0xF0:
+                    return typeInstrutions.HLT;
+                default:
+                    return typeInstrutions.NOT;
+            }
+
+        }
+
+
+        #endregion
+
         public enum typeULAop { add, sub, mul, div, not, and, or, xor};
+        public enum typeInstrutions { NOP, LDR_end, STR_end, ADD_end, SUB_end, MUL_end, DIV_end, NOT, AND_end, OR_end, XOR_end, JMP_end, JEQ_end, JG_end, JL_end, HLT };
     }
 }

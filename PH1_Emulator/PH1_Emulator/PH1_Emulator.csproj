@@ -70,6 +70,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PH1\Componentes.cs" />
+    <Compile Include="PH1\Logs.cs" />
+    <Compile Include="PH1\UnidadeControle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
