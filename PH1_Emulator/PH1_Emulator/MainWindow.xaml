@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Label x:Name="LB_CyclicTimeThreadPH1" Content="Tempo ThreadPH1:" Margin="397,380,0,0" BorderBrush="#FF707070" BorderThickness="1" Background="#00000000" Style="{DynamicResource Label_Inversor_G120C}" HorizontalAlignment="Left" Width="385" Height="29" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+
     </Grid>
 </Window>

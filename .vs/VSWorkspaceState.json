@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    "\\PH1_Emulator",
-    "\\PH1_Emulator\\PH1_Emulator"
+    "",
+    "\\PH1_Emulator\\PH1_Emulator\\obj",
+    "\\PH1_Emulator\\PH1_Emulator\\Properties"
   ],
   "PreviewInSolutionExplorer": false
 }
