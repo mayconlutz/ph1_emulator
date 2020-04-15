@@ -1,7 +1,6 @@
 C:\Users\Maycon\Source\Repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\bin\Debug\PH1_Emulator.exe.config
 C:\Users\Maycon\Source\Repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\bin\Debug\PH1_Emulator.exe
 C:\Users\Maycon\Source\Repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\bin\Debug\PH1_Emulator.pdb
-C:\Users\Maycon\Source\Repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\obj\Debug\PH1_Emulator.csprojAssemblyReference.cache
 C:\Users\Maycon\Source\Repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\obj\Debug\MainWindow.g.cs
 C:\Users\Maycon\Source\Repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\obj\Debug\App.g.cs
 C:\Users\Maycon\Source\Repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\obj\Debug\PH1_Emulator_MarkupCompile.cache
@@ -13,3 +12,4 @@ C:\Users\Maycon\Source\Repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\o
 C:\Users\Maycon\Source\Repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\obj\Debug\PH1_Emulator.csproj.CoreCompileInputs.cache
 C:\Users\Maycon\Source\Repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\obj\Debug\PH1_Emulator.exe
 C:\Users\Maycon\Source\Repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\obj\Debug\PH1_Emulator.pdb
+C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\obj\Debug\PH1_Emulator.csprojAssemblyReference.cache

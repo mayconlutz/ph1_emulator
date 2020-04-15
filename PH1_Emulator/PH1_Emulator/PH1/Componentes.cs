@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,10 +31,13 @@ using System.Threading.Tasks;
 namespace PH1_Emulator.PH1
 {
     /// <summary>
-    /// Esssa classe tem como função criar todos os componentes que a UC controla, como também todos os seus meios de interligação.
+    /// Esssa classe tem como função criar todos os omponentes que a UC controla, como também todos os seus meios de interligação.
     /// </summary>
     class Componentes
     {
+
+        PH1.Logs _logs = new Logs();
+
         /// Barramentos de interligação
         #region Barramentos
 
@@ -61,6 +65,7 @@ namespace PH1_Emulator.PH1
             set
             {
                 BarramentoRI = BarramentoA;
+                _logs.AddComponentes = "RIw Executado - Barramento RI <- Barramento A";
             }
         }
 
@@ -79,7 +84,7 @@ namespace PH1_Emulator.PH1
             set
             {
                 BarramentoA = _Valor_PC;
-
+                _logs.AddComponentes = "PCr Executado - Barramento A <- Valor PC";
             }
         }
         //Passa valor do Barramento A para o PC
@@ -88,6 +93,7 @@ namespace PH1_Emulator.PH1
             set
             {
                 _Valor_PC = BarramentoA;
+                _logs.AddComponentes = "PCw Executado - Valor PC <- Barramento A";
             }
         }
         //Conta mais uma operação no PC
@@ -96,6 +102,7 @@ namespace PH1_Emulator.PH1
             set
             {
                 _Valor_PC += 1;
+                _logs.AddComponentes = "PC+ Executado - Valor PC <- Valor PC + 1";
             }
         }
         //Disponibiliza o Valor de PC
@@ -116,7 +123,7 @@ namespace PH1_Emulator.PH1
             set
             {
                 BarramentoA = _Valor_AC;
-
+                _logs.AddComponentes = "ACr Executado - Barramento A <- Valor AC";
             }
         }
 
@@ -126,7 +133,9 @@ namespace PH1_Emulator.PH1
             set
             {
                 _Valor_AC = BarramentoA;
+                _logs.AddComponentes = "ACw Executado - Valor AC <- Barramento A";
                 BarramentoB = _Valor_AC;
+                _logs.AddComponentes = "ACw Executado - Barramento B <- Valor AC";
             }
         }
 
@@ -136,7 +145,9 @@ namespace PH1_Emulator.PH1
             set
             {
                 _Valor_AC = BarramentoC;
+                _logs.AddComponentes = "ACc Executado - Valor AC <- Barramento C";
                 BarramentoB = _Valor_AC;
+                _logs.AddComponentes = "ACc Executado - Barramento B <- Valor AC";
             }
         }
 
@@ -157,6 +168,7 @@ namespace PH1_Emulator.PH1
             set
             {
                 BarramentoA = _Valor_RDM;
+                _logs.AddComponentes = "RDMr Executado - Barramento A <- Valor RDM";
             }
         }
 
@@ -166,6 +178,7 @@ namespace PH1_Emulator.PH1
             set
             {
                 _Valor_RDM = BarramentoA;
+                _logs.AddComponentes = "RDMw Executado - Valor RDM <- Barramento A";
             }
         }
 
@@ -175,13 +188,13 @@ namespace PH1_Emulator.PH1
         #region REM - Registrador de Endereços da Memória
         //Declarando REM
         byte _Valor_REM;
-
         //Passa valor do REM para o Barramento A - Não utilizado por nenhum sinal de controle.
         public bool REMr
         {
             set
             {
                 BarramentoA = _Valor_REM;
+                _logs.AddComponentes = "REMr Executado - Barramento A <- Valor REM";
             }
         }
 
@@ -191,6 +204,7 @@ namespace PH1_Emulator.PH1
             set
             {
                 _Valor_REM = BarramentoA;
+                _logs.AddComponentes = "REMw Executado - Valor REM <- Barramento A";
             }
         }
 
@@ -206,12 +220,13 @@ namespace PH1_Emulator.PH1
             {
                 //O controle da MEM recebe o endereço de memória através do barramento de dados da memória REM.
                 BarramentoREM = _Valor_REM;
-
+                _logs.AddComponentes = "MEMr Executado - Barramento REM <- Valor REM";
                 //O controle da MEM escreve o valor que esta na memória de acordo com o endereço do barramento de dados da memória REM.
                 BarramentoRDM = MEM[BarramentoREM];
-
+                _logs.AddComponentes = "MEMr Executado - Barramento REM <- MEM[Barramento REM]";
                 //RDM recebe o valor do barramento de dados da memória RDM.
                 _Valor_RDM = BarramentoRDM;
+                _logs.AddComponentes = "MEMr Executado - Valor RDM <- Barramento RDM";
             }
         }
 
@@ -222,15 +237,15 @@ namespace PH1_Emulator.PH1
             {
                 //O controle da MEM recebe o endereço de memória através do barramento de dados da memória REM.
                 BarramentoREM = _Valor_REM;
-
+                _logs.AddComponentes = "MEMw Executado - Barramento REM <- Valor REM";
                 //barramento de dados da memória RDM recebe o valor do RDM.
                 BarramentoRDM = _Valor_RDM;
-
+                _logs.AddComponentes = "MEMw Executado - Barramento REM <- Valor RDM";
                 //O controle da MEM escreve o valor que esta no barramento de memória RDM na memória de acordo com o endereço do barramento de dados da memória REM.
                 MEM[BarramentoREM] = BarramentoRDM;
+                _logs.AddComponentes = "MEMw Executado - MEM[BarramentoREM] <- Barramento RDM";
             }
         }
-
 
         #endregion
 
@@ -248,42 +263,42 @@ namespace PH1_Emulator.PH1
                 case typeULAop.add:
 
                     BarramentoC = (byte)(BarramentoB + BarramentoA);
-
+                    _logs.AddComponentes = "ULA Operação ADD Executado - Barramento C <- Barramento B + Barramento A";
                     break;
                 case typeULAop.sub:
 
                     BarramentoC = (byte)(BarramentoB - BarramentoA);
-
+                    _logs.AddComponentes = "ULA Operação SUB Executado - Barramento C <- Barramento B - Barramento A";
                     break;
                 case typeULAop.mul:
 
                     BarramentoC = (byte)(BarramentoB * BarramentoA);
-
+                    _logs.AddComponentes = "ULA Operação MUL Executado - Barramento C <- Barramento B * Barramento A";
                     break;
                 case typeULAop.div:
 
                     BarramentoC = (byte)(BarramentoB / BarramentoA);
-
+                    _logs.AddComponentes = "ULA Operação DIV Executado - Barramento C <- Barramento B / Barramento A";
                     break;
                 case typeULAop.not:
                     
                     BarramentoC = (byte)~BarramentoB;
-
+                    _logs.AddComponentes = "ULA Operação NOT Executado - Barramento C <- NOT Barramento B";
                     break;
                 case typeULAop.and:
 
                     BarramentoC = (byte)(BarramentoB & BarramentoA);
-
+                    _logs.AddComponentes = "ULA Operação AND Executado - Barramento C <- Barramento B AND Barramento A";
                     break;
                 case typeULAop.or:
 
                     BarramentoC = (byte)(BarramentoB | BarramentoA);
-
+                    _logs.AddComponentes = "ULA Operação AND Executado - Barramento C <- Barramento B OR Barramento A";
                     break;
                 case typeULAop.xor:
 
                     BarramentoC = (byte)(BarramentoB ^ BarramentoA);
-
+                    _logs.AddComponentes = "ULA Operação AND Executado - Barramento C <- Barramento B XOR Barramento A";
                     break;
                 default:
 
@@ -303,36 +318,52 @@ namespace PH1_Emulator.PH1
             switch (InByte)
             {
                 case 0x00:
+                    _logs.AddComponentes = "OPCODE NOP Decodificado";
                     return typeInstrutions.NOP;
                 case 0x10:
+                    _logs.AddComponentes = "OPCODE LDR end Decodificado";
                     return typeInstrutions.LDR_end;
                 case 0x20:
+                    _logs.AddComponentes = "OPCODE STR end Decodificado";
                     return typeInstrutions.STR_end;
                 case 0x30:
+                    _logs.AddComponentes = "OPCODE ADD end Decodificado";
                     return typeInstrutions.ADD_end;
                 case 0x40:
+                    _logs.AddComponentes = "OPCODE SUB end Decodificado";
                     return typeInstrutions.SUB_end;
                 case 0x50:
+                    _logs.AddComponentes = "OPCODE MUL end Decodificado";
                     return typeInstrutions.MUL_end;
                 case 0x60:
+                    _logs.AddComponentes = "OPCODE DIV end Decodificado";
                     return typeInstrutions.DIV_end;
                 case 0x70:
+                    _logs.AddComponentes = "OPCODE NOT Decodificado";
                     return typeInstrutions.NOT;
                 case 0x80:
+                    _logs.AddComponentes = "OPCODE AND end Decodificado";
                     return typeInstrutions.AND_end;
                 case 0x90:
+                    _logs.AddComponentes = "OPCODE OR end Decodificado";
                     return typeInstrutions.OR_end;
                 case 0xA0:
+                    _logs.AddComponentes = "OPCODE XOR end Decodificado";
                     return typeInstrutions.XOR_end;
                 case 0xB0:
+                    _logs.AddComponentes = "OPCODE JMP end Decodificado";
                     return typeInstrutions.JMP_end;
                 case 0xC0:
+                    _logs.AddComponentes = "OPCODE JEQ end Decodificado";
                     return typeInstrutions.JEQ_end;
                 case 0xD0:
+                    _logs.AddComponentes = "OPCODE JG end Decodificado";
                     return typeInstrutions.JG_end;
                 case 0xE0:
+                    _logs.AddComponentes = "OPCODE JL end Decodificado";
                     return typeInstrutions.JL_end;
                 case 0xF0:
+                    _logs.AddComponentes = "OPCODE HLT Decodificado";
                     return typeInstrutions.HLT;
                 default:
                     return typeInstrutions.NOT;
@@ -345,5 +376,8 @@ namespace PH1_Emulator.PH1
 
         public enum typeULAop { add, sub, mul, div, not, and, or, xor};
         public enum typeInstrutions { NOP, LDR_end, STR_end, ADD_end, SUB_end, MUL_end, DIV_end, NOT, AND_end, OR_end, XOR_end, JMP_end, JEQ_end, JG_end, JL_end, HLT };
+
+        internal Logs logs { get => _logs; set => _logs = value; }
+
     }
 }
