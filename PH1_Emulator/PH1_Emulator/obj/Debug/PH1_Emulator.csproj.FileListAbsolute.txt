@@ -13,3 +13,7 @@ C:\Users\Maycon\Source\Repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\o
 C:\Users\Maycon\Source\Repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\obj\Debug\PH1_Emulator.exe
 C:\Users\Maycon\Source\Repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\obj\Debug\PH1_Emulator.pdb
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\obj\Debug\PH1_Emulator.csprojAssemblyReference.cache
+C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\obj\Debug\PH1_Emulator.csproj.CopyComplete
