@@ -23,6 +23,8 @@ namespace PH1_Emulator
 
         bool teste;
 
+        PH1.TabelaMemoria WindowTabelaMemoria;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -37,6 +39,7 @@ namespace PH1_Emulator
             ThreadPH1.Name = "Clock PH1";
             ThreadPH1.IsBackground = true;
             ThreadPH1.Start();
+       
         }
 
         //Evento disparado quando ocorre uma mudança no valor da string de logs dos componentes.
@@ -96,6 +99,18 @@ namespace PH1_Emulator
                     CB_AtivaDesativaLogComponentes.IsChecked = true;
                 }
             }
+        }
+
+        private void BT_ComponenteMEM_Click(object sender, RoutedEventArgs e)
+        {
+            WindowTabelaMemoria = new PH1.TabelaMemoria(PH1_Emulator._MEM);
+            WindowTabelaMemoria.Show();
+        }
+
+        void Window_Closing(object sender, CancelEventArgs e)
+        {
+            ThreadPH1.Abort();//Encerra o ThreadPH1, só por precaução, mas ele deve fechar, pois roda em background ou seja, quando o Thread principal fechar ele encerra sozinho.
+            WindowTabelaMemoria.Close(); //Fecha a Window que mostra a memória, pois ele esta sempre aberta, somente é escondida enquanto executa o programa.
         }
     }
 }

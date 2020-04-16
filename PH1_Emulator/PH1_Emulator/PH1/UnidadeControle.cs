@@ -28,8 +28,6 @@ using System.Threading.Tasks;
 |  1111   |     F    |   HLT     | Término da execução          |                         |
 |========================================================================================*/
 
-|========================================================================================*/
-
 namespace PH1_Emulator.PH1
 {
     class UnidadeControle : PH1.Componentes

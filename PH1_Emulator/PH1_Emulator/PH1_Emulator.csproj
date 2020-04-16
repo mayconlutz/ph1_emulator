@@ -70,10 +70,17 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PH1\TabelaMemoria.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PH1\Componentes.cs" />
     <Compile Include="PH1\Logs.cs" />
+    <Compile Include="PH1\TabelaMemoria.xaml.cs">
+      <DependentUpon>TabelaMemoria.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PH1\UnidadeControle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PH1_Emulator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="882.5" Width="1329.5">
+        Title="MainWindow" Height="882.5" Width="1329.5"
+        Closing="Window_Closing" >
     <Grid>
-        <TabControl Margin="10,59.5,0,0" HorizontalAlignment="Left" Width="1279" Height="734" VerticalAlignment="Top">
+        <TabControl Margin="10,90,0,0" HorizontalAlignment="Left" Width="1302" Height="734" VerticalAlignment="Top">
             <TabItem Header="Simulador PH1" Margin="-1,-2,-3,0">
 
                 <Grid x:Name="Line_ACc" Background="#FFE5E5E5" Height="682.5" Margin="-1,0,1,0">
@@ -295,7 +296,6 @@
                     </Line>
                     <TextBlock x:Name="Text_PCr_Copy4" HorizontalAlignment="Left" Height="18" Margin="651.334,5.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" FontWeight="Bold" FontSize="14"><Run Text="MEMr"/><LineBreak/><Run/></TextBlock>
                     <TextBlock x:Name="Text_PCr_Copy5" HorizontalAlignment="Left" Height="18" Margin="651.334,30.997,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="51" FontWeight="Bold" FontSize="14"><Run Text="MEM"/><Run Text="w"/><LineBreak/><Run/></TextBlock>
-                    <TextBox HorizontalAlignment="Left" Height="321.067" Margin="702,5,0,0" TextWrapping="Wrap" Text="MEM" VerticalAlignment="Top" Width="81" TextAlignment="Center" IsReadOnly="True" Cursor="Arrow" FontSize="18" TextDecorations="{x:Null}" FontWeight="Bold" VerticalContentAlignment="Center" ToolTip="Memória 256 Bytes"/>
                     <TextBlock HorizontalAlignment="Left" Height="23.017" Margin="440.039,282.286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="91.001" FontWeight="Bold"><Run Text="Barramento"/><Run Text=" "/><Run Text="A"/><LineBreak/><Run/></TextBlock>
                     <Line Stretch="Fill" Stroke="Black" X2="1" Margin="476.873,500.156,0,0" Fill="Black" StrokeThickness="1.7" Height="5" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="36.282">
                         <Line.RenderTransform>
@@ -733,6 +733,7 @@
                     </Line>
                     <TextBlock x:Name="Text_ACc_Copy" HorizontalAlignment="Left" Height="18" Margin="580.381,443.642,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" FontWeight="Bold" FontSize="14" Text="ULAop"/>
                     <TextBox HorizontalAlignment="Left" Height="91" Margin="414.006,409,0,0" TextWrapping="Wrap" Text="ULA" VerticalAlignment="Top" Width="164" TextAlignment="Center" IsReadOnly="True" Cursor="Arrow" FontSize="18" TextDecorations="{x:Null}" FontWeight="Bold" VerticalContentAlignment="Center" ToolTip="ULA"/>
+                    <Button x:Name="BT_ComponenteMEM" Content="MEM" HorizontalAlignment="Left" Height="320" Margin="708,6,0,0" VerticalAlignment="Top" Width="80" BorderBrush="Black" Background="White" FontWeight="Bold" FontSize="18" Click="BT_ComponenteMEM_Click"/>
 
 
                 </Grid>
@@ -742,6 +743,7 @@
             </TabItem>
 
         </TabControl>
+        <Button Content="Sair" HorizontalAlignment="Left" Height="64" Margin="331,16,0,0" VerticalAlignment="Top" Width="67"/>
 
 
     </Grid>
