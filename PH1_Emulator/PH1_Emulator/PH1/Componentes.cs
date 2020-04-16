@@ -379,5 +379,6 @@ namespace PH1_Emulator.PH1
 
         internal Logs logs { get => _logs; set => _logs = value; }
 
+        public byte _BarramentoRI { get => BarramentoRI;}
     }
 }
