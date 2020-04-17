@@ -5,6 +5,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.ComponentModel;
 using System.Threading;
+using Microsoft.Win32;
+using System.IO;
+using System.Windows.Documents;
 
 namespace PH1_Emulator
 {
@@ -199,5 +202,67 @@ namespace PH1_Emulator
         {
 
         }
+
+        private void BT_LoadArchive_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog Ofp = new OpenFileDialog();
+            Ofp.Title = "Abra o Arquivo de Texto";
+            Ofp.Filter = "Arquivos TXT (*.txt)|*.txt|All files (*.*)|*.*";
+
+            if (Ofp.ShowDialog() == true)
+            {
+                var sr = new StreamReader(Ofp.FileName);
+
+                var st1 = sr.ReadToEnd();
+
+                //Comentários sobre caracteres especiais e sistemas operacionais.
+                // \r = CR(Carriage Return) // Usado como quebra de linha no Mac OS anterior à versão X
+                // \n = LF(Line Feed) // Usado como quebra de linha Unix/Mac OS superior à versão X
+                // \r\n = CR + LF // Usado como quebra de linha no Windows
+
+
+                //Melhorar o código, só esta em funcionamento....
+                bool auxread = false;
+                byte endereco = 0;
+                byte valor = 0;
+                string stringdummy = "";
+                int i = 0;
+                foreach (var item in st1)
+                {
+                    if (!item.Equals('\n'))
+                    {
+                        if (item == ' ' || item.Equals('\r'))
+                        {
+                            if (auxread)
+                            {
+                                valor = byte.Parse(stringdummy, System.Globalization.NumberStyles.HexNumber);
+                                stringdummy = "";
+                                auxread = !auxread;
+                                PH1_Emulator._MEM[endereco] = valor;
+                            }
+                            else
+                            {
+                                endereco = byte.Parse(stringdummy, System.Globalization.NumberStyles.HexNumber);
+                                stringdummy = "";
+                                auxread = !auxread;
+                            }
+                        }
+                        else
+                        {
+                            stringdummy += item; 
+                        }
+                    }
+
+                    i += 1;
+                    if (i == st1.Length)
+                    {
+                        valor = byte.Parse(stringdummy, System.Globalization.NumberStyles.HexNumber);
+                        PH1_Emulator._MEM[endereco] = valor;
+                    }
+
+                }
+            }
+        }
+
     }
 }

@@ -32,7 +32,7 @@ namespace PH1_Emulator.PH1
             dt.Columns.Add("Valor" , typeof(string));
 
 
-            for (int i = 0; i < 255; i++)
+            for (int i = 0; i <= 255; i++)
             {
                 DataRow row = dt.NewRow();
                 row["Endereço"] = i;
