@@ -50,18 +50,21 @@ namespace PH1_Emulator.PH1
                     PCr = true;
                     REMw = true;
                     CicloClock += 1;
+                    logs.AddUC = "0 - REM <- PC";
                     break;
                 //Ciclo 1
                 //Ação = RDM <- MEM[REM]
                 case 1:
                     MEMr = true;
                     CicloClock += 1;
+                    logs.AddUC = "1 - RDM <- MEM[" + Valor_REM.ToString("X2")+ "]";
                     break;
                 //Ciclo 2
                 //Ação = PC <- PC + 1
                 case 2:
                     PCmais = true;
                     CicloClock += 1;
+                    logs.AddUC = "2 - PC <- PC + 1";
                     break;
                 //Ciclo 3
                 //Ação = RI <- RDM7..4
@@ -70,6 +73,7 @@ namespace PH1_Emulator.PH1
                     RIw = true;
                     Opcode = PH1_Decoder(_BarramentoRI); //RI é atualizado, descodificamos o Opcode.
                     CicloClock += 1;
+                    logs.AddUC = "3 - RI <- RDM7..4";
                     break;
                 //Ciclo 4 
                 //Se RI!='NOP' && RI!='NOT' && RI!='HLT'      Ação = REM <- PC
@@ -84,16 +88,19 @@ namespace PH1_Emulator.PH1
                         PCr = true;
                         REMw = true;
                         CicloClock += 1;
+                        logs.AddUC = "4 - REM <- PC";
                     }
                     else if (Opcode == typeInstrutions.NOP) //Se RI=='NOP' (NOP)
                     {
                         CicloClock = 0;
+                        logs.AddUC = "4 - Ir p/ 0";
                     }
                     else if (Opcode == typeInstrutions.NOT) //Se RI=='NOT' (NOT)
                     {
                         ULA(typeULAop.not);
                         ACc = true;
                         CicloClock+=1;
+                        logs.AddUC = "4 - AC <- !AC";
                     }
                     else if (Opcode == typeInstrutions.HLT) //Se RI== 'HLT'(HLT)
                     {
@@ -110,6 +117,7 @@ namespace PH1_Emulator.PH1
                     if (Opcode == typeInstrutions.NOT)
                     {
                         CicloClock = 0;
+                        logs.AddUC = "5 - REM <- PC";
                     }
                     //Opção 2
                     //Se for RI!= 'NOT'(NOT)
@@ -117,6 +125,7 @@ namespace PH1_Emulator.PH1
                     {
                         MEMr = true;
                         CicloClock += 1;
+                        logs.AddUC = "5 - RDM <- MEM[" + Valor_REM.ToString("X2") + "]";
                     }
                     break;
                 //Ciclo 6
@@ -125,7 +134,7 @@ namespace PH1_Emulator.PH1
 
                     PCmais = true;
                     CicloClock += 1;
-
+                    logs.AddUC = "6 - PC <- PC + 1";
                     break;
                 //Ciclo 7
                 //Se RI=='LDR' || RI=='STR' || RI=='ADD' || RI=='SUB' || RI=='MUL' || RI=='DIV' || RI=='AND' || RI=='OR' || RI=='XOR' Ação = REM <- RDM
@@ -141,6 +150,7 @@ namespace PH1_Emulator.PH1
                         {
                             RDMr = true;
                             PCw = true;
+                            logs.AddUC = "7 - Se (AC==0) PC <- RDM";
                         }
                     }
                     else if (Opcode == typeInstrutions.JG_end)
@@ -149,6 +159,7 @@ namespace PH1_Emulator.PH1
                         {
                             RDMr = true;
                             PCw = true;
+                            logs.AddUC = "7 - Se (AC>0) PC <- RDM";
                         }
                     }
                     else if(Opcode == typeInstrutions.JL_end)
@@ -157,12 +168,14 @@ namespace PH1_Emulator.PH1
                         {
                             RDMr = true;
                             PCw = true;
+                            logs.AddUC = "7 - Se (AC<0) PC <- RDM";
                         }
                     }
                     else
                     {
                         RDMr = true;
-                        REMw = true;             
+                        REMw = true;
+                        logs.AddUC = "7 - REM <- RDM";
                     }
                     CicloClock += 1;
                     break;
@@ -177,21 +190,25 @@ namespace PH1_Emulator.PH1
                     if (Opcode == typeInstrutions.JEQ_end || Opcode == typeInstrutions.JG_end || Opcode == typeInstrutions.JL_end)
                     {
                         CicloClock = 0;
+                        logs.AddUC = "8 - Ir p/ 0";
                         break;
                     }
                     else if(Opcode == typeInstrutions.JMP_end)
                     {
                         RDMr = true;
                         PCw = true;
+                        logs.AddUC = "8 - PC <- RDM";
                     }
                     else if (Opcode == typeInstrutions.STR_end)
                     {
                         ACr = true;
                         RDMw = true;
+                        logs.AddUC = "8 - RDM <- AC";
                     }
                     else
                     {
                         MEMr = true;
+                        logs.AddUC = "8 - RDM <- MEM["+ Valor_REM.ToString("X2") + "]";
                     }
 
                     CicloClock += 1;
@@ -212,56 +229,67 @@ namespace PH1_Emulator.PH1
                     {
                         RDMr = true;
                         ACw = true;
+                        logs.AddUC = "9 - AC <- RDM";
+                        //logs.AddUC = "9 - LDR " + Valor_REM.ToString("X2") + " ; AC <- MEM["+ Valor_REM.ToString("X2") + "]";
                     }
                     else if (Opcode == typeInstrutions.STR_end)
                     {
                         MEMw = true;
+                        logs.AddUC = "9 - MEM["+ Valor_REM.ToString("X2") + "] <- RDM";
                     }
                     else if (Opcode == typeInstrutions.ADD_end)
                     {
                         RDMr = true;
                         ULA(typeULAop.add);
                         ACc = true;
+                        logs.AddUC = "9 - AC <- AC + RDM";
                     }
                     else if (Opcode == typeInstrutions.SUB_end)
                     {
                         RDMr = true;
                         ULA(typeULAop.sub);
                         ACc = true;
+                        logs.AddUC = "9 - AC <- AC - RDM";
                     }
                     else if (Opcode == typeInstrutions.MUL_end)
                     {
                         RDMr = true;
                         ULA(typeULAop.mul);
                         ACc = true;
+                        logs.AddUC = "9 - AC <- AC * RDM";
                     }
                     else if (Opcode == typeInstrutions.DIV_end)
                     {
                         RDMr = true;
                         ULA(typeULAop.div);
                         ACc = true;
+                        logs.AddUC = "9 - AC <- AC / RDM";
                     }
                     else if (Opcode == typeInstrutions.AND_end)
                     {
                         RDMr = true;
                         ULA(typeULAop.and);
                         ACc = true;
+                        logs.AddUC = "9 - AC <- AC & RDM";
                     }
                     else if (Opcode == typeInstrutions.OR_end)
                     {
                         RDMr = true;
                         ULA(typeULAop.or);
                         ACc = true;
+                        logs.AddUC = "9 - AC <- AC | RDM";
                     }
                     else if (Opcode == typeInstrutions.XOR_end)
                     {
                         RDMr = true;
                         ULA(typeULAop.xor);
                         ACc = true;
+                        logs.AddUC = "9 - AC <- AC * RDM";
                     }
                     else
                     {
                         CicloClock = 0;
+                        logs.AddUC = "9 - Ir p/ 0";
                         break;
                     }
 
@@ -271,6 +299,7 @@ namespace PH1_Emulator.PH1
                 //Ação = Ir p/ 0
                 case 10:
                     CicloClock = 0;
+                    logs.AddUC = "10 - Ir p/ 0";
                     break;
                 default:
                     throw new NotImplementedException();

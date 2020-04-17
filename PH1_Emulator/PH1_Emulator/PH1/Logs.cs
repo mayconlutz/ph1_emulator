@@ -11,9 +11,11 @@ namespace PH1_Emulator.PH1
     class Logs : INotifyPropertyChanged
     {
         string string_Componentes = "";
+        string string_UC = "";
         int countItem = 0;
+
         /// <summary>
-        /// Adiciona item 
+        /// Adiciona item de controle dos componentes
         /// </summary>
         public string AddComponentes
         {
@@ -22,11 +24,26 @@ namespace PH1_Emulator.PH1
                 string_Componentes = countItem.ToString() + " - " + value;
                 countItem += 1;
 
-                RaisePropertyChanged("Adicionou Lista Componentes");
+                RaisePropertyChanged("Modificou Log Componentes");
+            }
+        }
+
+        /// <summary>
+        /// Adiciona item da unidade de controle
+        /// </summary>
+        public string AddUC
+        {
+            set
+            {
+                string_UC = value;
+
+
+                RaisePropertyChanged("Modificou Log UC");
             }
         }
 
         public string getComponentes { get => string_Componentes;}
+        public string getstring_UC { get => string_UC;}
 
         // Implementação da interface INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;

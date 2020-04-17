@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PH1_Emulator.PH1"
         mc:Ignorable="d"
-        Title="TabelaMemoria" Height="771.401" Width="342.694">
+        Title="TabelaMemoria" Height="771.401" Width="236.694">
     <Grid>
         <DataGrid x:Name="DT_Memoria" Margin="10,58,10,10">
 

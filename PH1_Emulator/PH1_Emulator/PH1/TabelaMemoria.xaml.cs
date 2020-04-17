@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
 
+
 namespace PH1_Emulator.PH1
 {
     /// <summary>
@@ -26,17 +27,16 @@ namespace PH1_Emulator.PH1
 
             DataTable dt = new DataTable();
 
-            for (int i = 1; i < 9; i++)
-            {
-                dt.Columns.Add("Addr "+ i, typeof(byte));
-                dt.Columns.Add("Valor " + i, typeof(byte));
-            }
 
-            for (int i = 0; i < 31; i++)
+            dt.Columns.Add("Endereço", typeof(string));
+            dt.Columns.Add("Valor" , typeof(string));
+
+
+            for (int i = 0; i < 255; i++)
             {
                 DataRow row = dt.NewRow();
-                row["Addr 1"] = i;
-                row["Valor 1"] = MEM[i];
+                row["Endereço"] = i;
+                row["Valor"] = MEM[i].ToString("X2");
                 dt.Rows.Add(row);
             }
 

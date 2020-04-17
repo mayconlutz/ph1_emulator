@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.ComponentModel;
+using System.Threading;
 
 namespace PH1_Emulator
 {
@@ -21,7 +22,9 @@ namespace PH1_Emulator
         //Declarando o Controle do PH1.
         PH1.UnidadeControle PH1_Emulator;
 
-        bool teste;
+        bool HabilitaLogComponentes;
+        bool HabilitaLogUC;
+        bool HabilitaDebugClock;
 
         PH1.TabelaMemoria WindowTabelaMemoria;
 
@@ -34,12 +37,29 @@ namespace PH1_Emulator
             //Criando evento que verifica quando tem algum log do controle do PH1.
             PH1_Emulator.logs.PropertyChanged += Logs_PropertyChanged;
 
+
+            //teste
+            byte[] MEM = new byte[256];
+            MEM[0x0] = 0x10;
+            MEM[0x1] = 0x81;
+            MEM[0x2] = 0x30;
+            MEM[0x3] = 0x82;
+            MEM[0x4] = 0x20;
+            MEM[0x5] = 0x80;
+            MEM[0x6] = 0xF0;
+            MEM[0x80] = 0x00;
+            MEM[0x81] = 0x05;
+            MEM[0x82] = 0x02;
+
+            PH1_Emulator._MEM = MEM;
+
             //Instânciando o Thread e passando alguns parâmetros necessários;
             ThreadPH1 = new System.Threading.Thread(CyclicPH1);
             ThreadPH1.Name = "Clock PH1";
             ThreadPH1.IsBackground = true;
             ThreadPH1.Start();
-       
+
+
         }
 
         //Evento disparado quando ocorre uma mudança no valor da string de logs dos componentes.
@@ -47,18 +67,32 @@ namespace PH1_Emulator
         {
             //Adiciona a string no listbox de log dos componentes.
 
-            CB_AtivaDesativaLogComponentes.Dispatcher.Invoke(delegate { teste = (bool)CB_AtivaDesativaLogComponentes.IsChecked; });
-            if (teste)
+            CB_AtivaDesativaLogComponentes.Dispatcher.Invoke(delegate { HabilitaLogComponentes = (bool)CB_AtivaDesativaLogComponentes.IsChecked; });
+
+            if (HabilitaLogComponentes && e.PropertyName.Equals("Modificou Log Componentes"))
             {
                 LB_logComponentes.Dispatcher.Invoke(delegate { LB_logComponentes.Items.Add(PH1_Emulator.logs.getComponentes); });
+
             }
-  
+
+            CB_AtivaDesativaLogUnidadeControle.Dispatcher.Invoke(delegate { HabilitaLogUC = (bool)CB_AtivaDesativaLogUnidadeControle.IsChecked; });
+
+            if (HabilitaLogUC && e.PropertyName.Equals("Modificou Log UC"))
+            {
+                LB_logUnidadeControle.Dispatcher.Invoke(delegate { LB_logUnidadeControle.Items.Add(PH1_Emulator.logs.getstring_UC); });
+            }
+
         }
+
+        //ManualResetEvent serve para colocar estados de sinalização nos Threads, ou seja 
+        ManualResetEvent mrse = new ManualResetEvent(false);
 
         private void CyclicPH1()
         {
             while (true)
             {
+                mrse.WaitOne();
+
                 //Armazena o tempo atual
                 DT_ThreadPH1 = DateTime.Now;
 
@@ -67,12 +101,19 @@ namespace PH1_Emulator
 
 
 
+
                 //Coloca o Thread para dormir, enviando o argumento do tempo em milessegundos.
-                System.Threading.Thread.Sleep(1);
+                System.Threading.Thread.Sleep(100);
 
                 //Subtrai o tempo atual do tempo armazenado no inicio do laço, assim sabemos o tempo que levou para percorrer um ciclo do loop.
                 LB_CyclicTimeThreadPH1.Dispatcher.Invoke(delegate { LB_CyclicTimeThreadPH1.Content = (DateTime.Now - DT_ThreadPH1).ToString(); });
 
+
+                CB_DebugClock.Dispatcher.Invoke(delegate { HabilitaDebugClock =(bool)CB_DebugClock.IsChecked;});  
+                if (HabilitaDebugClock)
+                {
+                    mrse.Reset();
+                }
             }
 
         }
@@ -111,6 +152,52 @@ namespace PH1_Emulator
         {
             ThreadPH1.Abort();//Encerra o ThreadPH1, só por precaução, mas ele deve fechar, pois roda em background ou seja, quando o Thread principal fechar ele encerra sozinho.
             WindowTabelaMemoria.Close(); //Fecha a Window que mostra a memória, pois ele esta sempre aberta, somente é escondida enquanto executa o programa.
+        }
+
+        private void CB_AtivaDesativaLogUnidadeControle_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if ((bool)CB_AtivaDesativaLogUnidadeControle.IsChecked)
+            {
+                MessageBoxResult result = MessageBox.Show("Desativando o Log da UC, o sistema não irá mais gravar os logs!", "Desativar Logs da Unidade de Controle", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    CB_AtivaDesativaLogUnidadeControle.IsChecked = false;
+                }
+
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Ativando o Log da UC, o sistema irá consumir mais memória RAM!", "Ativar Logs da Unidade de Controle", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    CB_AtivaDesativaLogUnidadeControle.IsChecked = true;
+                }
+            }
+        }
+
+        private void BT_PausePH1_Click(object sender, RoutedEventArgs e)
+        {
+            mrse.Reset();
+        }
+
+        private void BT_PlayPH1_Click(object sender, RoutedEventArgs e)
+        {
+            mrse.Set();
+        }
+
+        private void BT_StopPH1_Click(object sender, RoutedEventArgs e)
+        {
+            //
+            mrse.Reset();
+            byte[] MEM = new byte[256];
+            PH1_Emulator._MEM = MEM;
+        }
+
+        private void LB_logComponentes_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        {
+
         }
     }
 }

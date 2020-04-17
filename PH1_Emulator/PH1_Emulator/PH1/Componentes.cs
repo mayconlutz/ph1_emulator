@@ -208,6 +208,8 @@ namespace PH1_Emulator.PH1
             }
         }
 
+        public byte Valor_REM { get => _Valor_REM; }
+
         #endregion
 
         ///Operações que envolvem controle de 3 componentes.

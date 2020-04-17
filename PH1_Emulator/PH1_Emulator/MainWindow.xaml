@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PH1_Emulator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="882.5" Width="1329.5"
+        Title="MainWindow" Height="1004" Width="1470.5"
         Closing="Window_Closing" >
     <Grid>
-        <TabControl Margin="10,90,0,0" HorizontalAlignment="Left" Width="1302" Height="734" VerticalAlignment="Top">
-            <TabItem Header="Simulador PH1" Margin="-1,-2,-3,0">
+        <TabControl Margin="10,60,0,0" HorizontalAlignment="Left" Width="1404" Height="903" VerticalAlignment="Top">
+            <TabItem Header="Simulador PH1" Margin="-2,-2,-2,0">
 
-                <Grid x:Name="Line_ACc" Background="#FFE5E5E5" Height="682.5" Margin="-1,0,1,0">
+                <Grid x:Name="Line_ACc" Background="#FFE5E5E5" Height="696" Margin="0,106,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1369">
                     <Line Stretch="Fill" Stroke="Black" X2="1" Margin="381,200,0,0" Fill="Black" StrokeThickness="1.7" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="119"/>
                     <Line x:Name="Line_ACr" Stretch="Fill" Stroke="Black" X2="1" Margin="251,298.666,0,0" Fill="Black" StrokeThickness="1.7" RenderTransformOrigin="0.5,0.5" Height="5" Width="20" VerticalAlignment="Top" HorizontalAlignment="Left">
                         <Line.RenderTransform>
@@ -23,9 +23,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Left" VerticalAlignment="Top" Stroke="Black"
                       X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                      StrokeDashArray="2 2" StrokeThickness="3" Margin="650.771,0,507.542,651.166" RenderTransformOrigin="0.5,0.5" Height="6.5" >
+                      StrokeDashArray="2 2" StrokeThickness="3" Margin="595,25,0,0" RenderTransformOrigin="0.5,0.5" Height="6" Width="107" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -35,14 +35,14 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Label x:Name="LB_CyclicTimeThreadPH1" Content="Tempo ThreadPH1:" Margin="881,635,0,0" BorderBrush="#FF707070" BorderThickness="1" Background="#00000000" HorizontalAlignment="Left" Width="184" Height="28" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
-                    <ListBox x:Name="LB_logComponentes" HorizontalAlignment="Left" Height="444" Margin="881,175,0,0" VerticalAlignment="Top" Width="358"/>
-                    <CheckBox x:Name="CB_AtivaDesativaLogComponentes" Content="Ativa/Desativa Log" HorizontalAlignment="Left" Margin="1091,149,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonDown="CB_AtivaDesativaLogComponentes_PreviewMouseLeftButtonDown" IsChecked="True"/>
-                    <Label Content="Logs Componentes:" HorizontalAlignment="Left" Margin="881,149,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="LB_CyclicTimeThreadPH1" Content="Tempo ThreadPH1:" Margin="496,552,0,0" BorderBrush="#FF707070" BorderThickness="1" Background="#00000000" HorizontalAlignment="Left" Width="184" Height="28" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                    <ListBox x:Name="LB_logComponentes" HorizontalAlignment="Left" Height="256" Margin="911,45,0,0" VerticalAlignment="Top" Width="369"/>
+
+                    <CheckBox x:Name="CB_AtivaDesativaLogComponentes" Content="Ativa/Desativa Log" HorizontalAlignment="Left" Margin="1121,19,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonDown="CB_AtivaDesativaLogComponentes_PreviewMouseLeftButtonDown" IsChecked="True"/>
+                    <Label Content="Logs Componentes:" HorizontalAlignment="Left" Margin="911,19,0,0" VerticalAlignment="Top"/>
                     <TextBlock x:Name="Text_ACr" HorizontalAlignment="Left" Height="18" Margin="249,273,0,0" TextWrapping="Wrap" Text="ACr" VerticalAlignment="Top" Width="24" FontWeight="Bold" FontSize="14"/>
                     <TextBlock x:Name="Text_ACw" HorizontalAlignment="Left" Height="18" Margin="296,273,0,0" TextWrapping="Wrap" Text="ACw" VerticalAlignment="Top" Width="33" FontWeight="Bold" FontSize="14"/>
                     <TextBlock x:Name="Text_ACc" HorizontalAlignment="Left" Height="18" Margin="347,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" FontWeight="Bold" FontSize="14"><Run Text="AC"/><Run Text="c"/></TextBlock>
-                    <Line Stretch="Fill" Stroke="Black" X2="1" Margin="400,256,771,426.5" Fill="Black" StrokeThickness="1.7"/>
                     <Line x:Name="Line_ACw" Stretch="Fill" Stroke="Black" X2="1" Margin="303,298.666,0,0" Fill="Black" StrokeThickness="1.7" RenderTransformOrigin="0.5,0.5" Height="5" Width="20" VerticalAlignment="Top" HorizontalAlignment="Left">
                         <Line.RenderTransform>
                             <TransformGroup>
@@ -282,9 +282,9 @@
                         </Line.RenderTransform>
                     </Line>
                     <TextBox HorizontalAlignment="Left" Height="59" Margin="487,172,0,0" TextWrapping="Wrap" Text="REM" VerticalAlignment="Top" Width="147" IsReadOnly="True" Cursor="Arrow" FontSize="18" TextDecorations="{x:Null}" FontWeight="Bold" ToolTip="Registrador de Endereços da Memória" VerticalContentAlignment="Center" TextAlignment="Center"/>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Left" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2 2" StrokeThickness="3" Margin="651.021,0,507.792,625.666" RenderTransformOrigin="0.5,0.5" Height="6.5" >
+                        StrokeDashArray="2 2" StrokeThickness="3" Margin="600,52,0,0" RenderTransformOrigin="0.5,0.5" Height="6" Width="126" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -323,9 +323,9 @@
                     <TextBox HorizontalAlignment="Left" Height="59" Margin="237,172,0,0" TextWrapping="Wrap" Text="PC" VerticalAlignment="Top" Width="147" IsReadOnly="True" Cursor="Arrow" FontSize="18" TextDecorations="{x:Null}" FontWeight="Bold" ToolTip="Program Counter" VerticalContentAlignment="Center" TextAlignment="Center"/>
                     <TextBox HorizontalAlignment="Left" Height="59" Margin="487,56,0,0" TextWrapping="Wrap" Text="RDM" VerticalAlignment="Top" Width="147" IsReadOnly="True" Cursor="Arrow" FontSize="18" TextDecorations="{x:Null}" FontWeight="Bold" ToolTip="Registrador de Dados da Memória" VerticalContentAlignment="Center" TextAlignment="Center"/>
                     <TextBox HorizontalAlignment="Left" Height="58" Margin="237,303,0,0" TextWrapping="Wrap" Text="AC" VerticalAlignment="Top" Width="147" IsReadOnly="True" Cursor="Arrow" FontSize="18" TextDecorations="{x:Null}" FontWeight="Bold" ToolTip="Acumulador" VerticalContentAlignment="Center" TextAlignment="Center"/>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="-8.817,0,1233.13,533.749" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="-39,116,1264,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -335,9 +335,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="1.183,0,1223.13,533.749" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="-29,116,1254,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -347,9 +347,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="11.185,0,1213.128,533.749" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="-19,116,1244,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -359,9 +359,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="21.187,0,1203.126,533.749" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="-9,116,1234,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -371,9 +371,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="31.189,0,1193.124,533.749" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="1,115,1224,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -383,9 +383,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="41.358,0,1182.955,533.749" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="11,115,1214,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -395,9 +395,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="51.36,0,1172.953,533.749" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="21,115,1204,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -407,9 +407,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="61.362,0,1162.951,533.749" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="31,115,1194,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -419,9 +419,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="71.364,0,1152.949,533.749" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="41,115,1184,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -431,9 +431,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="81.366,0,1142.947,533.749" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="51,115,1174,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -443,9 +443,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="91.368,0,1132.945,533.749" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="60,115,1164,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -455,9 +455,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="101.37,0,1122.943,533.749" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="70,115,1154,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -467,9 +467,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="111.372,0,1112.941,533.749" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="81,115,1144,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -479,9 +479,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="121.374,0,1102.939,533.749" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="91,115,1134,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -491,9 +491,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="131.376,0,1092.937,533.749" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="101,115,1124,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -503,9 +503,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="-8.817,0,1233.13,450.421" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="-33,194,1257,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -515,9 +515,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="1.183,0,1223.13,450.421" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="-23,194,1247,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -527,9 +527,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="11.185,0,1213.128,450.421" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="-13,194,1237,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -539,9 +539,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="21.187,0,1203.126,450.421" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="-3,194,1227,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -551,9 +551,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="31.189,0,1193.124,450.421" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="7,194,1217,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -563,9 +563,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="41.358,0,1182.955,450.421" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="17,194,1207,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -575,9 +575,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="51.36,0,1172.953,450.421" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="27,194,1197,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -587,9 +587,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="61.362,0,1162.951,450.421" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="37,194,1187,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -599,9 +599,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="71.364,0,1152.949,450.421" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="47,194,1177,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -611,9 +611,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="81.366,0,1142.947,450.421" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="57,194,1167,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -623,9 +623,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="91.368,0,1132.945,450.421" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="67,194,1157,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -635,9 +635,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="101.37,0,1122.943,450.421" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="77,194,1147,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -647,9 +647,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="111.372,0,1112.941,450.421" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="87,194,1137,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -659,21 +659,9 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="121.374,0,1102.939,450.421" RenderTransformOrigin="0.5,0.5" Height="8" >
-                        <Line.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform ScaleX="-1"/>
-                                <SkewTransform/>
-                                <RotateTransform Angle="90"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Line.RenderTransform>
-                    </Line>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="130.207,0,1091.768,451.59" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="96,194,1126,0" RenderTransformOrigin="0.5,0.5" Height="8" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -686,9 +674,9 @@
                     <TextBox HorizontalAlignment="Left" Height="75" Margin="7,50,0,0" TextWrapping="Wrap" Text="Decodificador" VerticalAlignment="Top" Width="164" TextAlignment="Center" IsReadOnly="True" Cursor="Arrow" FontSize="18" TextDecorations="{x:Null}" FontWeight="Bold" VerticalContentAlignment="Center" ToolTip="Decodificador"/>
                     <TextBox HorizontalAlignment="Left" Margin="7,164,0,0" TextWrapping="Wrap" Text="UC" Width="164" TextAlignment="Center" IsReadOnly="True" Cursor="Arrow" FontSize="18" TextDecorations="{x:Null}" FontWeight="Bold" VerticalContentAlignment="Center" Height="75" VerticalAlignment="Top" ToolTip="Unidade de Controle"/>
                     <TextBlock x:Name="Text_PCr_Copy6" HorizontalAlignment="Left" Height="18" Margin="8.749,396.921,0,0" TextWrapping="Wrap" Text="Legenda:" VerticalAlignment="Top" Width="77.167" FontWeight="Bold" FontSize="14"/>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Left" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2 2" StrokeThickness="3" Margin="7.092,0,1203.888,172.584" RenderTransformOrigin="0.5,0.5" Height="6.5" >
+                        StrokeDashArray="2 2" StrokeThickness="3" Margin="7,535,0,0" RenderTransformOrigin="0.5,0.5" Height="6" Width="74" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -699,9 +687,9 @@
                         </Line.RenderTransform>
                     </Line>
                     <Line Stretch="Fill" Stroke="Black" X2="1" Margin="6.918,429.038,0,0" Fill="Black" StrokeThickness="1.7" Height="5" HorizontalAlignment="Left" Width="63.331" VerticalAlignment="Top"/>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Left" VerticalAlignment="Bottom" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="6.622,0,1204.187,226.683" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="-45,0,0,259" RenderTransformOrigin="0.5,0.5" Height="8" Width="74" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -717,11 +705,11 @@
                     <TextBlock HorizontalAlignment="Left" Height="18.434" Margin="73.337,456.586,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231.001" FontWeight="Bold"><Run Text="Barramento"/><Run Text=" "/><Run Text="de dados da memória."/></TextBlock>
                     <TextBlock HorizontalAlignment="Left" Height="18.434" Margin="73.337,475.918,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231.001" FontWeight="Bold" Text="Barramento de endereços da memória."/>
                     <TextBlock HorizontalAlignment="Left" Height="18.434" Margin="73.337,493.915,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231.001" FontWeight="Bold"><Run Text="Barramento de "/><Run Text="controle da memória."/></TextBlock>
-                    <Rectangle HorizontalAlignment="Left" Height="121.972" Margin="1.08,396.193,0,0" Stroke="Black" VerticalAlignment="Top" Width="303.258"/>
+                    <Rectangle HorizontalAlignment="Left" Margin="1,396,0,0" Stroke="Black" Width="303" Height="126" VerticalAlignment="Top"/>
                     <TextBlock x:Name="Text_ACr_Copy" HorizontalAlignment="Left" Height="18" Margin="14.5,256,0,0" TextWrapping="Wrap" Text="RIw...." VerticalAlignment="Top" Width="46" FontWeight="Bold" FontSize="14"/>
-                    <Line HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Stroke="Black"
+                    <Line HorizontalAlignment="Left" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="577.457,0,644.518,210.09" RenderTransformOrigin="0.5,0.5" Height="8" >
+                        StrokeDashArray="2" StrokeThickness="2" Margin="507,464,0,0" RenderTransformOrigin="0.5,0.5" Height="8" Width="63" >
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="-1"/>
@@ -734,16 +722,25 @@
                     <TextBlock x:Name="Text_ACc_Copy" HorizontalAlignment="Left" Height="18" Margin="580.381,443.642,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" FontWeight="Bold" FontSize="14" Text="ULAop"/>
                     <TextBox HorizontalAlignment="Left" Height="91" Margin="414.006,409,0,0" TextWrapping="Wrap" Text="ULA" VerticalAlignment="Top" Width="164" TextAlignment="Center" IsReadOnly="True" Cursor="Arrow" FontSize="18" TextDecorations="{x:Null}" FontWeight="Bold" VerticalContentAlignment="Center" ToolTip="ULA"/>
                     <Button x:Name="BT_ComponenteMEM" Content="MEM" HorizontalAlignment="Left" Height="320" Margin="708,6,0,0" VerticalAlignment="Top" Width="80" BorderBrush="Black" Background="White" FontWeight="Bold" FontSize="18" Click="BT_ComponenteMEM_Click"/>
+                    <ListBox x:Name="LB_logUnidadeControle" HorizontalAlignment="Left" Height="297" Margin="911,379,0,0" VerticalAlignment="Top" Width="369"/>
+                    <Label Content="Logs Unidade de Controle:" HorizontalAlignment="Left" Margin="911,348,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="CB_AtivaDesativaLogUnidadeControle" Content="Ativa/Desativa Log" HorizontalAlignment="Left" Margin="1121,349,0,0" VerticalAlignment="Top" IsChecked="True" PreviewMouseLeftButtonDown="CB_AtivaDesativaLogUnidadeControle_PreviewMouseLeftButtonDown"/>
+                    <GroupBox Header="Debug" HorizontalAlignment="Left" Height="101" Margin="330,-108,0,0" VerticalAlignment="Top" Width="208" BorderBrush="Black"/>
+                    <Button x:Name="BT_PausePH1" Content="Pause" HorizontalAlignment="Left" Height="41" Margin="404,-79,0,0" VerticalAlignment="Top" Width="60" Click="BT_PausePH1_Click" Background="#FFFF9700" FontSize="20"/>
+                    <Button x:Name="BT_PlayPH1" Content="Run" HorizontalAlignment="Left" Height="41" Margin="342,-79,0,0" VerticalAlignment="Top" Width="60" Background="#FF00FF3A" FontSize="20" Click="BT_PlayPH1_Click"/>
+                    <Button x:Name="BT_StopPH1" Content="Stop" HorizontalAlignment="Left" Height="41" Margin="466,-79,0,0" VerticalAlignment="Top" Width="60" Click="BT_StopPH1_Click" Background="Red" FontSize="20"/>
+                    <CheckBox x:Name="CB_DebugClock" Content="Debug por Clock" HorizontalAlignment="Left" Margin="341,-30,0,0" VerticalAlignment="Top" IsChecked="True"/>
 
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Assembler PH1" Margin="-1,-2,-12,0">
+            <TabItem Header="Assembler PH1" Margin="-2,-2,-11,0">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
 
+
         </TabControl>
-        <Button Content="Sair" HorizontalAlignment="Left" Height="64" Margin="331,16,0,0" VerticalAlignment="Top" Width="67"/>
+
 
 
     </Grid>
