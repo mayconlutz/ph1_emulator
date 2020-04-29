@@ -4,6 +4,7 @@ C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\b
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\bin\Debug\Microsoft.Xaml.Behaviors.dll
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\bin\Debug\Microsoft.Xaml.Behaviors.pdb
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\obj\Debug\PH1_Emulator.csprojAssemblyReference.cache
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\obj\Debug\MainWindow.g.cs
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\obj\Debug\PH1\TabelaMemoria.g.cs
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1_Emulator\obj\Debug\App.g.cs

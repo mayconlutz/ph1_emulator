@@ -37,14 +37,14 @@ namespace PH1
         DateTime DT_ThreadPH1 = new DateTime();
 
         //Declarando o Controle do PH1.
-        src.UnidadeControle _PH1_Emulator;
+        PH1src.UnidadeControle _PH1_Emulator;
         
 
         bool HabilitaLogComponentes;
         bool HabilitaLogUC;
         bool HabilitaDebugClock;
 
-        src.TabelaMemoria WindowTabelaMemoria;
+        PH1src.TabelaMemoria WindowTabelaMemoria;
 
         public MainWindow()
         {
@@ -55,7 +55,7 @@ namespace PH1
             InitializeComponent();
 
             //Instânciando o controle do PH1.
-            _PH1_Emulator = new src.UnidadeControle();
+            _PH1_Emulator = new PH1src.UnidadeControle();
             //Criando evento que verifica quando tem algum log do controle do PH1.
             _PH1_Emulator.logs.PropertyChanged += Logs_PropertyChanged;
 
@@ -165,7 +165,7 @@ namespace PH1
 
         private void BT_ComponenteMEM_Click(object sender, RoutedEventArgs e)
         {
-            WindowTabelaMemoria = new src.TabelaMemoria(_PH1_Emulator._MEM);
+            WindowTabelaMemoria = new PH1src.TabelaMemoria(_PH1_Emulator._MEM);
             WindowTabelaMemoria.Show();
         }
 
@@ -417,6 +417,9 @@ namespace PH1
             {
                 Console.WriteLine(item);
             }
+
+            AssemblerSrc.Controle.getWordFromTextEditor(textEditor.Text, textEditor.Text.Length);
         }
+
     }
 }

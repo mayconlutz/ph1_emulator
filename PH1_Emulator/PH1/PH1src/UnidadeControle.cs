@@ -28,9 +28,9 @@ using System.Threading.Tasks;
 |  1111   |     F    |   HLT     | Término da execução          |                         |
 |========================================================================================*/
 
-namespace PH1.src
+namespace PH1.PH1src
 {
-    class UnidadeControle : src.Componentes
+    class UnidadeControle : PH1src.Componentes
     {
         int CicloClock = 0;
         typeInstrutions Opcode;

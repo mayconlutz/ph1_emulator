@@ -28,7 +28,7 @@ using System.Threading.Tasks;
 |  1111   |     F    |   HLT     | Término da execução          |                         |
 |========================================================================================*/
 
-namespace PH1.src
+namespace PH1.PH1src
 {
     /// <summary>
     /// Esssa classe tem como função criar todos os omponentes que a UC controla, como também todos os seus meios de interligação.
@@ -36,7 +36,7 @@ namespace PH1.src
     class Componentes
     {
 
-        src.Logs _logs = new Logs();
+        PH1src.Logs _logs = new Logs();
 
         /// Barramentos de interligação
         #region Barramentos

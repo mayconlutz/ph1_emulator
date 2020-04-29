@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PH1.src
+namespace PH1.PH1src
 {
     class Logs : INotifyPropertyChanged
     {

@@ -44,6 +44,7 @@ C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.Av
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\bin\Debug\netcoreapp3.0\ICSharpCode.AvalonEdit.dll
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\bin\Debug\netcoreapp3.0\ICSharpCode.AvalonEdit.pdb
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\bin\Debug\netcoreapp3.0\ICSharpCode.AvalonEdit.xml
+C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\netcoreapp3.0\ICSharpCode.AvalonEdit.csprojAssemblyReference.cache
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\netcoreapp3.0\GeneratedInternalTypeHelper.g.cs
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\netcoreapp3.0\ICSharpCode.AvalonEdit_MarkupCompile.cache
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\netcoreapp3.0\ICSharpCode.AvalonEdit_MarkupCompile.lref

@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using System.Data;
 
 
-namespace PH1.src
+namespace PH1.PH1src
 {
     /// <summary>
     /// Interaction logic for TabelaMemoria.xaml
