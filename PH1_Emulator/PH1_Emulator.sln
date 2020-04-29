@@ -4,13 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PH1_Emulator", "PH1_Emulator\PH1_Emulator.csproj", "{3DF86E9B-709B-4D8E-9D97-2987582D745B}"
-	ProjectSection(ProjectDependencies) = postProject
-		{7E3FB565-B7A2-476F-B31F-AFB51617B585} = {7E3FB565-B7A2-476F-B31F-AFB51617B585}
-	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICSharpCode.AvalonEdit", "..\ICSharpCode.AvalonEdit\ICSharpCode.AvalonEdit.csproj", "{7E3FB565-B7A2-476F-B31F-AFB51617B585}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PH1", "PH1\PH1.csproj", "{03686EE9-689A-418F-B653-205B87C323F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PH1", "PH1\PH1.csproj", "{03686EE9-689A-418F-B653-205B87C323F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICSharpCode.AvalonEdit", "ICSharpCode.AvalonEdit\ICSharpCode.AvalonEdit.csproj", "{C457D1D8-77CF-4695-ACCF-131875F649C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,14 +19,14 @@ Global
 		{3DF86E9B-709B-4D8E-9D97-2987582D745B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DF86E9B-709B-4D8E-9D97-2987582D745B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DF86E9B-709B-4D8E-9D97-2987582D745B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7E3FB565-B7A2-476F-B31F-AFB51617B585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E3FB565-B7A2-476F-B31F-AFB51617B585}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7E3FB565-B7A2-476F-B31F-AFB51617B585}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7E3FB565-B7A2-476F-B31F-AFB51617B585}.Release|Any CPU.Build.0 = Release|Any CPU
 		{03686EE9-689A-418F-B653-205B87C323F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{03686EE9-689A-418F-B653-205B87C323F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03686EE9-689A-418F-B653-205B87C323F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03686EE9-689A-418F-B653-205B87C323F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C457D1D8-77CF-4695-ACCF-131875F649C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C457D1D8-77CF-4695-ACCF-131875F649C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C457D1D8-77CF-4695-ACCF-131875F649C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C457D1D8-77CF-4695-ACCF-131875F649C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

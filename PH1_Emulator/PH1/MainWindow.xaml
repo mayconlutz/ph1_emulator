@@ -739,7 +739,8 @@
             </TabItem>
             <TabItem Header="Assembler PH1" Margin="-2,-2,-11,0">
                 <Grid Background="#FFE5E5E5">
-                    <avalonedit:TextEditor x:Name="TextEditor" HorizontalAlignment="Left" Height="552" Margin="45,86,0,0" VerticalAlignment="Top" Width="545"/>
+                    <avalonedit:TextEditor HorizontalAlignment="Left" Height="337" Margin="10,43,0,0" VerticalAlignment="Top" Width="387"/>
+
                 </Grid>
 
             </TabItem>

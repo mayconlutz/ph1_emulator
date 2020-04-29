@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Maycon\\Source\\Repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\PH1\\PH1.csproj": {}
+    "C:\\Users\\Maycon\\source\\repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\PH1\\PH1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Maycon\\Source\\Repos\\mayconlutz\\ph1_emulator\\ICSharpCode.AvalonEdit\\ICSharpCode.AvalonEdit.csproj": {
+    "C:\\Users\\Maycon\\source\\repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\ICSharpCode.AvalonEdit\\ICSharpCode.AvalonEdit.csproj": {
       "version": "6.1.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Maycon\\Source\\Repos\\mayconlutz\\ph1_emulator\\ICSharpCode.AvalonEdit\\ICSharpCode.AvalonEdit.csproj",
+        "projectUniqueName": "C:\\Users\\Maycon\\source\\repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\ICSharpCode.AvalonEdit\\ICSharpCode.AvalonEdit.csproj",
         "projectName": "AvalonEdit",
-        "projectPath": "C:\\Users\\Maycon\\Source\\Repos\\mayconlutz\\ph1_emulator\\ICSharpCode.AvalonEdit\\ICSharpCode.AvalonEdit.csproj",
+        "projectPath": "C:\\Users\\Maycon\\source\\repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\ICSharpCode.AvalonEdit\\ICSharpCode.AvalonEdit.csproj",
         "packagesPath": "C:\\Users\\Maycon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Maycon\\Source\\Repos\\mayconlutz\\ph1_emulator\\ICSharpCode.AvalonEdit\\obj\\",
+        "outputPath": "C:\\Users\\Maycon\\source\\repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\ICSharpCode.AvalonEdit\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
@@ -103,14 +103,14 @@
         }
       }
     },
-    "C:\\Users\\Maycon\\Source\\Repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\PH1\\PH1.csproj": {
+    "C:\\Users\\Maycon\\source\\repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\PH1\\PH1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Maycon\\Source\\Repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\PH1\\PH1.csproj",
+        "projectUniqueName": "C:\\Users\\Maycon\\source\\repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\PH1\\PH1.csproj",
         "projectName": "PH1",
-        "projectPath": "C:\\Users\\Maycon\\Source\\Repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\PH1\\PH1.csproj",
+        "projectPath": "C:\\Users\\Maycon\\source\\repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\PH1\\PH1.csproj",
         "packagesPath": "C:\\Users\\Maycon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Maycon\\Source\\Repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\PH1\\obj\\",
+        "outputPath": "C:\\Users\\Maycon\\source\\repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\PH1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -131,8 +131,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Maycon\\Source\\Repos\\mayconlutz\\ph1_emulator\\ICSharpCode.AvalonEdit\\ICSharpCode.AvalonEdit.csproj": {
-                "projectPath": "C:\\Users\\Maycon\\Source\\Repos\\mayconlutz\\ph1_emulator\\ICSharpCode.AvalonEdit\\ICSharpCode.AvalonEdit.csproj"
+              "C:\\Users\\Maycon\\source\\repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\ICSharpCode.AvalonEdit\\ICSharpCode.AvalonEdit.csproj": {
+                "projectPath": "C:\\Users\\Maycon\\source\\repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\ICSharpCode.AvalonEdit\\ICSharpCode.AvalonEdit.csproj"
               }
             }
           }

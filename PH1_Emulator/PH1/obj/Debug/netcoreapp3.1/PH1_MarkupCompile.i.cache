@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Maycon\Source\Repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1\obj\Debug\netcoreapp3.1\
+C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1\obj\Debug\netcoreapp3.1\
 PH1
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-C:\Users\Maycon\Source\Repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1\App.xaml
+C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1\App.xaml
 2-1540171176
 
 8-140516466
-2001481100484
+200-145464322
 MainWindow.xaml;src\TabelaMemoria.xaml;
 
-True
+False
 
