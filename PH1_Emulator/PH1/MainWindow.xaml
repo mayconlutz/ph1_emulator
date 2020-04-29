@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PH1"
-        xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" x:Class="PH1.MainWindow"
+        xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" xmlns:Forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" x:Class="PH1.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="1004" Width="1470.5">
     <Grid>
@@ -739,15 +739,87 @@
             </TabItem>
             <TabItem Header="Assembler PH1" Margin="-2,-2,-11,0">
                 <Grid Background="#FFE5E5E5">
-                    <avalonedit:TextEditor HorizontalAlignment="Left" Height="337" Margin="10,43,0,0" VerticalAlignment="Top" Width="387"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <ToolBar DockPanel.Dock="Top" Margin="0,0,974,846">
+                        <ToolBar.Resources>
+                            <Style TargetType="{x:Type Image}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type ButtonBase}, AncestorLevel=1}, Path=IsEnabled}" Value="False">
+                                        <Setter Property="Opacity" Value="0.30" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ToolBar.Resources>
+                        <Button Click="openFileClick">
+                            <Image Source="Images/Open.png" Height="16"/>
+                        </Button>
+                        <Button Click="saveFileClick">
+                            <Image Source="Images/Save.png" Height="16"/>
+                        </Button>
+                        <Separator/>
+                        <Button Command="Cut">
+                            <Image Source="Images/Cut.png" Height="16"/>
+                        </Button>
+                        <Button Command="Copy">
+                            <Image Source="Images/Copy.png" Height="16"/>
+                        </Button>
+                        <Button Command="Paste">
+                            <Image Source="Images/Paste.png" Height="16"/>
+                        </Button>
+                        <Button Command="Delete">
+                            <Image Source="Images/Delete.png" Height="16"/>
+                        </Button>
+                        <Separator/>
+                        <Button Command="Undo">
+                            <Image Source="Images/Undo.png" Height="16"/>
+                        </Button>
+                        <Button Command="Redo">
+                            <Image Source="Images/Redo.png" Height="16"/>
+                        </Button>
+                        <Separator/>
+                        <CheckBox IsChecked="{Binding ElementName=textEditor,Path=WordWrap}">
+                            <Image Source="Images/WordWrap.png" Height="16"/>
+                        </CheckBox>
+                        <CheckBox IsChecked="{Binding ElementName=textEditor,Path=ShowLineNumbers}">
+                            <TextBlock Width="16" TextAlignment="Center">#</TextBlock>
+                        </CheckBox>
+                        <CheckBox IsChecked="{Binding ElementName=textEditor,Path=Options.ShowEndOfLine}">
+                            <TextBlock Width="16" TextAlignment="Center">¶</TextBlock>
+                        </CheckBox>
+                        <ComboBox Name="highlightingComboBox"
+				            SelectedItem="{Binding SyntaxHighlighting, ElementName=textEditor}"
+                            ItemsSource="{Binding Source={x:Static avalonedit:HighlightingManager.Instance}, Path=HighlightingDefinitions}"
+                            SelectionChanged="HighlightingComboBox_SelectionChanged"/>
+                    </ToolBar>
+
+                    <avalonedit:TextEditor
+				        Name="textEditor"
+				        FontFamily="Consolas"
+				        FontSize="10pt"
+				        SyntaxHighlighting="C#" Margin="4,41,970,363"
+			            >Welcome to AvalonEdit!
+                    </avalonedit:TextEditor>
+                    <GridSplitter Width="33" HorizontalAlignment="Left" Margin="465,0,0,0"/>
+                    <DockPanel Margin="559,60,441,346">
+                        <ComboBox Name="propertyGridComboBox" DockPanel.Dock="Top"
+				          SelectedIndex="0" SelectionChanged="propertyGridComboBoxSelectionChanged">
+                            <ComboBoxItem>TextEditor</ComboBoxItem>
+                            <ComboBoxItem>TextArea</ComboBoxItem>
+                            <ComboBoxItem>Options</ComboBoxItem>
+                        </ComboBox>
+                        <WindowsFormsHost DockPanel.Dock="Right" Name="propertyGridHost">
+                            <Forms:PropertyGrid x:Name="propertyGrid"/>
+                        </WindowsFormsHost>
+                    </DockPanel>
+                    <Button Content="Button" HorizontalAlignment="Left" Height="46" Margin="364,10,0,0" VerticalAlignment="Top" Width="84" Click="Button_Click"/>
 
                 </Grid>
 
             </TabItem>
 
         </TabControl>
-
-
-
     </Grid>
 </Window>
