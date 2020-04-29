@@ -16,6 +16,7 @@ namespace PH1_Emulator
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         //Declarando Thread do loop que roda o clock da unidade de controle do PH1.
         System.Threading.Thread ThreadPH1;
 
@@ -33,8 +34,12 @@ namespace PH1_Emulator
 
         public MainWindow()
         {
-            InitializeComponent();
+            //codeBox.InitializeComponent();
 
+            //codeBox.CurrentHighlighter = HighlighterManager.Instance.Highlighters["VHDL"];
+
+            InitializeComponent();
+                
             //Instânciando o controle do PH1.
             PH1_Emulator = new PH1.UnidadeControle();
             //Criando evento que verifica quando tem algum log do controle do PH1.
@@ -106,7 +111,7 @@ namespace PH1_Emulator
 
 
                 //Coloca o Thread para dormir, enviando o argumento do tempo em milessegundos.
-                System.Threading.Thread.Sleep(100);
+                System.Threading.Thread.Sleep(500);
 
                 //Subtrai o tempo atual do tempo armazenado no inicio do laço, assim sabemos o tempo que levou para percorrer um ciclo do loop.
                 LB_CyclicTimeThreadPH1.Dispatcher.Invoke(delegate { LB_CyclicTimeThreadPH1.Content = (DateTime.Now - DT_ThreadPH1).ToString(); });
@@ -153,7 +158,8 @@ namespace PH1_Emulator
 
         void Window_Closing(object sender, CancelEventArgs e)
         {
-            ThreadPH1.Abort();//Encerra o ThreadPH1, só por precaução, mas ele deve fechar, pois roda em background ou seja, quando o Thread principal fechar ele encerra sozinho.
+            ThreadPH1.Abort();//Encerra o ThreadPH1, só por precaução, mas ele deve fechar, pois roda em background ou seja, quando o Thread principal fechar ele encerra sozinho.          
+
             WindowTabelaMemoria.Close(); //Fecha a Window que mostra a memória, pois ele esta sempre aberta, somente é escondida enquanto executa o programa.
         }
 
@@ -264,5 +270,19 @@ namespace PH1_Emulator
             }
         }
 
+        private void TB_Clock_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (!char.IsControl((char)e.Key) && !char.IsDigit((char)e.Key) &&
+             ((char)e.Key != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if (((char)e.Key == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

@@ -1,0 +1,104 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "AvalonEdit/6.1.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.0",
+        "compile": {
+          "bin/placeholder/AvalonEdit.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AvalonEdit.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App"
+        ]
+      }
+    }
+  },
+  "libraries": {
+    "AvalonEdit/6.1.0": {
+      "type": "project",
+      "path": "../../ICSharpCode.AvalonEdit/ICSharpCode.AvalonEdit.csproj",
+      "msbuildProject": "../../ICSharpCode.AvalonEdit/ICSharpCode.AvalonEdit.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "AvalonEdit >= 6.1.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Maycon\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Maycon\\Source\\Repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\PH1\\PH1.csproj",
+      "projectName": "PH1",
+      "projectPath": "C:\\Users\\Maycon\\Source\\Repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\PH1\\PH1.csproj",
+      "packagesPath": "C:\\Users\\Maycon\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Maycon\\Source\\Repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\PH1\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Maycon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "projectReferences": {
+            "C:\\Users\\Maycon\\Source\\Repos\\mayconlutz\\ph1_emulator\\ICSharpCode.AvalonEdit\\ICSharpCode.AvalonEdit.csproj": {
+              "projectPath": "C:\\Users\\Maycon\\Source\\Repos\\mayconlutz\\ph1_emulator\\ICSharpCode.AvalonEdit\\ICSharpCode.AvalonEdit.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.WindowsDesktop.App.WPF": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

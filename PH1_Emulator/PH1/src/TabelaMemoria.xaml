@@ -1,0 +1,14 @@
+﻿<Window x:Class="PH1.src.TabelaMemoria"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PH1.src"
+        mc:Ignorable="d"
+        Title="TabelaMemoria" Height="771.401" Width="236.694">
+    <Grid>
+        <DataGrid x:Name="DT_Memoria" Margin="10,58,10,10">
+
+        </DataGrid>
+    </Grid>
+</Window>

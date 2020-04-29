@@ -1,9 +1,10 @@
-﻿<Window x:Class="PH1_Emulator.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PH1_Emulator"
+        x:Class="PH1_Emulator.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="1004" Width="1470.5"
         Closing="Window_Closing" >
@@ -134,7 +135,7 @@
                     <Ellipse Fill="Black" HorizontalAlignment="Left" Height="9" Margin="428.5,81.64,0,0" Stroke="Black" StrokeThickness="1.7" VerticalAlignment="Top" Width="9"/>
                     <Line Stretch="Fill" Stroke="Black" X2="1" Margin="611.5,84,0,0" Fill="Black" StrokeThickness="4" Height="5" HorizontalAlignment="Left" Width="119" VerticalAlignment="Top"/>
                     <Line Stretch="Fill" Stroke="Black" X2="1" Margin="611.5,199.5,0,0" Fill="Black" StrokeThickness="4" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="119"/>
-                    <TextBlock Margin="305.076,153.314,0,0" TextWrapping="Wrap" Height="15.017" VerticalAlignment="Top" HorizontalAlignment="Left" Width="13.084" Text="&#x2794;" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock Margin="305.076,153.314,0,0" TextWrapping="Wrap" Height="15.017" VerticalAlignment="Top" HorizontalAlignment="Left" Width="13.084" Text="➔" RenderTransformOrigin="0.5,0.5">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -732,14 +733,15 @@
                     <Button x:Name="BT_LoadArchive" Content="Load Archive" HorizontalAlignment="Left" Height="56" Margin="9,-84,0,0" VerticalAlignment="Top" Width="123" Background="#FFC3C3C3" FontSize="14" Click="BT_LoadArchive_Click"/>
                     <GroupBox Header="Configurações Thread" HorizontalAlignment="Left" Height="101" Margin="420,-108,0,0" VerticalAlignment="Top" Width="208" BorderBrush="Black"/>
                     <Label x:Name="LB_CyclicTimeThreadPH1" Content="Tempo ThreadPH1:" Margin="428,-43,0,0" BorderBrush="#FF707070" BorderThickness="1" Background="#00000000" HorizontalAlignment="Left" Width="184" Height="28" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="TB_Clock" HorizontalAlignment="Left" Height="35" Margin="663,-84,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="159" KeyDown="TB_Clock_KeyDown"/>
 
 
                 </Grid>
             </TabItem>
             <TabItem Header="Assembler PH1" Margin="-2,-2,-11,0">
                 <Grid Background="#FFE5E5E5"/>
-            </TabItem>
 
+            </TabItem>
 
         </TabControl>
 

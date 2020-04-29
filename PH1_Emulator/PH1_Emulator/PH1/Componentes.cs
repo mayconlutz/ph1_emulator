@@ -242,7 +242,7 @@ namespace PH1_Emulator.PH1
                 _logs.AddComponentes = "MEMw Executado - Barramento REM <- Valor REM";
                 //barramento de dados da memória RDM recebe o valor do RDM.
                 BarramentoRDM = _Valor_RDM;
-                _logs.AddComponentes = "MEMw Executado - Barramento REM <- Valor RDM";
+                _logs.AddComponentes = "MEMw Executado - Barramento RDM <- Valor RDM";
                 //O controle da MEM escreve o valor que esta no barramento de memória RDM na memória de acordo com o endereço do barramento de dados da memória REM.
                 MEM[BarramentoREM] = BarramentoRDM;
                 _logs.AddComponentes = "MEMw Executado - MEM[BarramentoREM] <- Barramento RDM";
