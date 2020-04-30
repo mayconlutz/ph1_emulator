@@ -486,7 +486,7 @@ namespace PH1
 
         private void BT_LoadToSim_Click(object sender, RoutedEventArgs e)
         {
-
+            _PH1_Emulator._MEM = AssemblerSrc.Controle.Memory;
         }
     }
 }

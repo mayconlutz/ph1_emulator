@@ -11,7 +11,7 @@
         <TabControl Margin="10,60,0,0" HorizontalAlignment="Left" Width="1404" Height="903" VerticalAlignment="Top">
             <TabItem Header="Simulador PH1" Margin="-2,-2,-2,0">
 
-                <Grid x:Name="Line_ACc" Background="#FFE5E5E5" Height="696" Margin="0,106,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1369">
+                <Grid x:Name="Line_ACc" Background="#FFE5E5E5" Height="764" Margin="0,106,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1369">
                     <Line Stretch="Fill" Stroke="Black" X2="1" Margin="381,200,0,0" Fill="Black" StrokeThickness="1.7" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="119"/>
                     <Line x:Name="Line_ACr" Stretch="Fill" Stroke="Black" X2="1" Margin="251,298.666,0,0" Fill="Black" StrokeThickness="1.7" RenderTransformOrigin="0.5,0.5" Height="5" Width="20" VerticalAlignment="Top" HorizontalAlignment="Left">
                         <Line.RenderTransform>
@@ -721,9 +721,9 @@
                     <TextBlock x:Name="Text_ACc_Copy" HorizontalAlignment="Left" Height="18" Margin="580.381,443.642,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" FontWeight="Bold" FontSize="14" Text="ULAop"/>
                     <TextBox HorizontalAlignment="Left" Height="91" Margin="414.006,409,0,0" TextWrapping="Wrap" Text="ULA" VerticalAlignment="Top" Width="164" TextAlignment="Center" IsReadOnly="True" Cursor="Arrow" FontSize="18" TextDecorations="{x:Null}" FontWeight="Bold" VerticalContentAlignment="Center" ToolTip="ULA"/>
                     <Button x:Name="BT_ComponenteMEM" Content="MEM" HorizontalAlignment="Left" Height="320" Margin="708,6,0,0" VerticalAlignment="Top" Width="80" BorderBrush="Black" Background="White" FontWeight="Bold" FontSize="18" Click="BT_ComponenteMEM_Click"/>
-                    <ListBox x:Name="LB_logUnidadeControle" HorizontalAlignment="Left" Height="297" Margin="1123,382,0,0" VerticalAlignment="Top" Width="232" Background="Black" Foreground="Lime"/>
-                    <Label Content="Logs Unidade de Controle:" HorizontalAlignment="Left" Margin="1123,356,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="CB_AtivaDesativaLogUnidadeControle" Content="Ativa/Desativa Log" HorizontalAlignment="Left" Margin="1130,681,0,0" VerticalAlignment="Top" IsChecked="True" PreviewMouseLeftButtonDown="CB_AtivaDesativaLogUnidadeControle_PreviewMouseLeftButtonDown"/>
+                    <ListBox x:Name="LB_logUnidadeControle" HorizontalAlignment="Left" Height="297" Margin="1123,332,0,0" VerticalAlignment="Top" Width="232" Background="Black" Foreground="Lime"/>
+                    <Label Content="Logs Unidade de Controle:" HorizontalAlignment="Left" Margin="1123,306,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="CB_AtivaDesativaLogUnidadeControle" Content="Ativa/Desativa Log" HorizontalAlignment="Left" Margin="1130,631,0,0" VerticalAlignment="Top" IsChecked="True" PreviewMouseLeftButtonDown="CB_AtivaDesativaLogUnidadeControle_PreviewMouseLeftButtonDown"/>
                     <GroupBox Header="Debug" HorizontalAlignment="Left" Height="101" Margin="189,-108,0,0" VerticalAlignment="Top" Width="208" BorderBrush="Black"/>
                     <Button x:Name="BT_PausePH1" Content="Pause" HorizontalAlignment="Left" Height="41" Margin="263,-79,0,0" VerticalAlignment="Top" Width="60" Click="BT_PausePH1_Click" Background="#FFFF9700" FontSize="20"/>
                     <Button x:Name="BT_PlayPH1" Content="Run" HorizontalAlignment="Left" Height="41" Margin="201,-79,0,0" VerticalAlignment="Top" Width="60" Background="#FF00FF3A" FontSize="20" Click="BT_PlayPH1_Click"/>
@@ -748,12 +748,12 @@
 				        Name="textEditor"
 				        FontFamily="Consolas"
 				        FontSize="10pt"
-				        SyntaxHighlighting="C#" Margin="1,29,584,0"
+				        SyntaxHighlighting="C#" Margin="1,29,584,96"
 			            >text
                     </avalonedit:TextEditor>
 
-                    <GridSplitter Width="33" HorizontalAlignment="Left" Margin="725,0,0,0"/>
-                    <DockPanel Margin="759,30,241,0">
+                    <GridSplitter Width="33" HorizontalAlignment="Left" Margin="725,0,0,96"/>
+                    <DockPanel Margin="759,30,241,114">
                         <ComboBox Name="propertyGridComboBox" DockPanel.Dock="Top"
 				          SelectedIndex="0" SelectionChanged="propertyGridComboBoxSelectionChanged">
                             <ComboBoxItem>TextEditor</ComboBoxItem>
@@ -817,8 +817,8 @@
                     </ToolBar>
                     <Button x:Name="BT_Assemble" Content="Assemble" HorizontalAlignment="Left" Height="20" Margin="292,4,0,0" VerticalAlignment="Top" Width="73" Click="BT_Assemble_Click" BorderBrush="#FF46FF00"/>
                     <Button x:Name="BT_LoadToSim" Content="Load to Sim" HorizontalAlignment="Left" Height="20" Margin="367,4,0,0" VerticalAlignment="Top" Width="73" Click="BT_LoadToSim_Click" BorderBrush="#FF0068FF"/>
-                    <DataGrid x:Name="DT_Code" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="419" Margin="1102,34,0,0" VerticalAlignment="Top" Width="296"/>
-                    <DataGrid x:Name="DT_TS" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="407" Margin="1102,458,0,0" VerticalAlignment="Top" Width="296"/>
+                    <DataGrid x:Name="DT_Code" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="370" Margin="1102,34,0,0" VerticalAlignment="Top" Width="296"/>
+                    <DataGrid x:Name="DT_TS" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="354" Margin="1102,407,0,0" VerticalAlignment="Top" Width="296"/>
 
                 </Grid>
 
