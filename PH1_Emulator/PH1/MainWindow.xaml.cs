@@ -418,7 +418,9 @@ namespace PH1
                 Console.WriteLine(item);
             }
 
-            AssemblerSrc.Controle.getWordFromTextEditor(textEditor.Text, textEditor.Text.Length);
+            string s = textEditor.Text;
+
+            AssemblerSrc.Controle.Assembler(ref s, textEditor.Text.Length);
         }
 
     }
