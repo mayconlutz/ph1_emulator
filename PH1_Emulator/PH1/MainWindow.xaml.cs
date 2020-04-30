@@ -21,6 +21,7 @@ using ICSharpCode.AvalonEdit.Folding;
 using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Search;
 using Path = System.IO.Path;
+using System.Data;
 
 namespace PH1
 {
@@ -411,17 +412,81 @@ namespace PH1
         }
         #endregion
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BT_Assemble_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var item in textEditor.Text)
-            {
-                Console.WriteLine(item);
-            }
-
             string s = textEditor.Text;
 
-            AssemblerSrc.Controle.Assembler(ref s, textEditor.Text.Length);
+
+            if (AssemblerSrc.Controle.Assembler(ref s, textEditor.Text.Length) == 0)
+            {
+                DataTable dt = new DataTable();
+
+                dt.Columns.Add("Endereço", typeof(string));
+                dt.Columns.Add("Valor16", typeof(string));
+                dt.Columns.Add("Valor10", typeof(string));
+                dt.Columns.Add("Valor2", typeof(string));
+                dt.Columns.Add("Instrução", typeof(string));
+                for (int i = 0; i <= 255; i++)
+                {
+                    DataRow row = dt.NewRow();
+                    row["Endereço"] = i;
+                    row["Valor16"] = AssemblerSrc.Controle.Memory[i].ToString("X2");
+                    row["Valor10"] = AssemblerSrc.Controle.Memory[i].ToString();
+                    row["Valor2"] = Convert.ToString(AssemblerSrc.Controle.Memory[i], 2).PadLeft(8, '0');
+                    row["Instrução"] = AssemblerSrc.Controle.Memory[i].ToString("X2");
+                    dt.Rows.Add(row);
+                }
+
+                DT_Code.ItemsSource = dt.DefaultView;
+
+                dt = new DataTable();
+
+                dt.Columns.Add("Endereço", typeof(string));
+                dt.Columns.Add("Rótulo", typeof(string));
+
+                for (int i = 0; i <= 255; i++)
+                {
+                    DataRow row = dt.NewRow();
+                    row["Endereço"] = i;
+                    row["Rótulo"] = AssemblerSrc.Controle.SymbolTable[i];
+                    dt.Rows.Add(row);
+                }
+                DT_TS.ItemsSource = dt.DefaultView;
+            }
+            else
+            {
+                //mostrar mensagem de erro e atualizar a error list
+                DataTable dt = new DataTable();
+
+                DT_Code.ItemsSource = dt.DefaultView;
+                DT_TS.ItemsSource = dt.DefaultView;
+            }
+
+
+
+
+
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        /// Link: https://docs.microsoft.com/en-us/dotnet/api/system.globalization.numberformatinfo?redirectedfrom=MSDN&view=netcore-3.1
+        public static String ToBinary(Byte[] data)
+        {
+            return string.Join(" ", data.Select(byt => Convert.ToString(byt, 2).PadLeft(8, '0')));
+        }
+
+        public static byte[] ConvertToByteArray(string str, Encoding encoding)
+        {
+            return encoding.GetBytes(str);
+        }
+
+        private void BT_LoadToSim_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

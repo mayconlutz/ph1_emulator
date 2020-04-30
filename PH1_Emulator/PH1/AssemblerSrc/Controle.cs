@@ -16,12 +16,16 @@ namespace PH1.AssemblerSrc
         static int auxAdress = 0;         //auxiliar para definir qual o endereço a ser associado o valor na Memoria da linguagem de máquina.
         static bool auxAssembler = false; //auxiliar para definir qual parte do código esta sendo montada a TEXT ou DATA.
         static bool auxMnemonic = false;     //auxiliar para montagem da linguagem de maquina, definindo se a string é mnemonico ou não.
+
+        public static byte[] Memory { get => MEM; }
+        public static string[] SymbolTable { get => _TS; }
+
         /// <summary>
         /// Montador do programa, a partir dos mnemonicos e os rótulos monta a linguagem de máquina
         /// </summary>
         /// <param name="text"></param>
         /// <param name="tamanho"></param>
-        public static void Assembler(ref string text, int tamanho)
+        public static int Assembler(ref string text, int tamanho)
         {
             //Declara memória de controle e tabela de simbolos
             MEM = new byte[256];
@@ -31,7 +35,7 @@ namespace PH1.AssemblerSrc
             getWordFromTextEditor(ref text, tamanho, false);
             getWordFromTextEditor(ref text, tamanho, true);
 
-
+            return 0;
         }
 
         /// <summary>

@@ -743,11 +743,32 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
-                    <ToolBar DockPanel.Dock="Top" Margin="0,0,974,846">
+
+                    <avalonedit:TextEditor
+				        Name="textEditor"
+				        FontFamily="Consolas"
+				        FontSize="10pt"
+				        SyntaxHighlighting="C#" Margin="1,29,584,0"
+			            >text
+                    </avalonedit:TextEditor>
+
+                    <GridSplitter Width="33" HorizontalAlignment="Left" Margin="725,0,0,0"/>
+                    <DockPanel Margin="759,30,241,0">
+                        <ComboBox Name="propertyGridComboBox" DockPanel.Dock="Top"
+				          SelectedIndex="0" SelectionChanged="propertyGridComboBoxSelectionChanged">
+                            <ComboBoxItem>TextEditor</ComboBoxItem>
+                            <ComboBoxItem>TextArea</ComboBoxItem>
+                            <ComboBoxItem>Options</ComboBoxItem>
+                        </ComboBox>
+                        <WindowsFormsHost DockPanel.Dock="Right" Name="propertyGridHost">
+                            <Forms:PropertyGrid x:Name="propertyGrid"/>
+                        </WindowsFormsHost>
+                    </DockPanel>
+                    <ToolBar DockPanel.Dock="Top" Margin="0,0,0,846" Grid.ColumnSpan="2">
                         <ToolBar.Resources>
                             <Style TargetType="{x:Type Image}">
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type ButtonBase}, AncestorLevel=1}, Path=IsEnabled}" Value="False">
+                                    <DataTrigger Binding="{Binding IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type ButtonBase}, AncestorLevel=1}}" Value="False">
                                         <Setter Property="Opacity" Value="0.30" />
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -780,41 +801,24 @@
                             <Image Source="Images/Redo.png" Height="16"/>
                         </Button>
                         <Separator/>
-                        <CheckBox IsChecked="{Binding ElementName=textEditor,Path=WordWrap}">
+                        <CheckBox IsChecked="{Binding WordWrap, ElementName=textEditor}">
                             <Image Source="Images/WordWrap.png" Height="16"/>
                         </CheckBox>
-                        <CheckBox IsChecked="{Binding ElementName=textEditor,Path=ShowLineNumbers}">
-                            <TextBlock Width="16" TextAlignment="Center">#</TextBlock>
+                        <CheckBox IsChecked="{Binding ShowLineNumbers, ElementName=textEditor}">
+                            <TextBlock Width="16" TextAlignment="Center"><Run Text="#"/></TextBlock>
                         </CheckBox>
-                        <CheckBox IsChecked="{Binding ElementName=textEditor,Path=Options.ShowEndOfLine}">
-                            <TextBlock Width="16" TextAlignment="Center">¶</TextBlock>
+                        <CheckBox IsChecked="{Binding Options.ShowEndOfLine, ElementName=textEditor}">
+                            <TextBlock Width="16" TextAlignment="Center"><Run Text="¶"/></TextBlock>
                         </CheckBox>
-                        <ComboBox Name="highlightingComboBox"
+                        <ComboBox x:Name="highlightingComboBox"
 				            SelectedItem="{Binding SyntaxHighlighting, ElementName=textEditor}"
-                            ItemsSource="{Binding Source={x:Static avalonedit:HighlightingManager.Instance}, Path=HighlightingDefinitions}"
+                            ItemsSource="{Binding HighlightingDefinitions, Source={x:Static avalonedit:HighlightingManager.Instance}}"
                             SelectionChanged="HighlightingComboBox_SelectionChanged"/>
                     </ToolBar>
-
-                    <avalonedit:TextEditor
-				        Name="textEditor"
-				        FontFamily="Consolas"
-				        FontSize="10pt"
-				        SyntaxHighlighting="C#" Margin="4,41,970,363"
-			            >Welcome to AvalonEdit!
-                    </avalonedit:TextEditor>
-                    <GridSplitter Width="33" HorizontalAlignment="Left" Margin="465,0,0,0"/>
-                    <DockPanel Margin="559,60,441,346">
-                        <ComboBox Name="propertyGridComboBox" DockPanel.Dock="Top"
-				          SelectedIndex="0" SelectionChanged="propertyGridComboBoxSelectionChanged">
-                            <ComboBoxItem>TextEditor</ComboBoxItem>
-                            <ComboBoxItem>TextArea</ComboBoxItem>
-                            <ComboBoxItem>Options</ComboBoxItem>
-                        </ComboBox>
-                        <WindowsFormsHost DockPanel.Dock="Right" Name="propertyGridHost">
-                            <Forms:PropertyGrid x:Name="propertyGrid"/>
-                        </WindowsFormsHost>
-                    </DockPanel>
-                    <Button Content="Button" HorizontalAlignment="Left" Height="46" Margin="364,10,0,0" VerticalAlignment="Top" Width="84" Click="Button_Click"/>
+                    <Button x:Name="BT_Assemble" Content="Assemble" HorizontalAlignment="Left" Height="20" Margin="292,4,0,0" VerticalAlignment="Top" Width="73" Click="BT_Assemble_Click" BorderBrush="#FF46FF00"/>
+                    <Button x:Name="BT_LoadToSim" Content="Load to Sim" HorizontalAlignment="Left" Height="20" Margin="367,4,0,0" VerticalAlignment="Top" Width="73" Click="BT_LoadToSim_Click" BorderBrush="#FF0068FF"/>
+                    <DataGrid x:Name="DT_Code" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="419" Margin="1102,34,0,0" VerticalAlignment="Top" Width="296"/>
+                    <DataGrid x:Name="DT_TS" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="407" Margin="1102,458,0,0" VerticalAlignment="Top" Width="296"/>
 
                 </Grid>
 
