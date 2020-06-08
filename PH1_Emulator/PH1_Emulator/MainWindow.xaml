@@ -36,7 +36,6 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <ListBox x:Name="LB_logComponentes" HorizontalAlignment="Left" Height="256" Margin="911,45,0,0" VerticalAlignment="Top" Width="448" Background="Black" Foreground="Lime"/>
 
                     <CheckBox x:Name="CB_AtivaDesativaLogComponentes" Content="Ativa/Desativa Log" HorizontalAlignment="Left" Margin="1236,26,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonDown="CB_AtivaDesativaLogComponentes_PreviewMouseLeftButtonDown" IsChecked="True"/>
                     <Label Content="Logs Componentes:" HorizontalAlignment="Left" Margin="911,19,0,0" VerticalAlignment="Top"/>
@@ -215,7 +214,6 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <TextBlock x:Name="Text_PCr_Copy" HorizontalAlignment="Left" Height="18" Margin="496.335,122.999,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" FontWeight="Bold" FontSize="14"><Run Text="MEMr"/><LineBreak/><Run/></TextBlock>
                     <Line x:Name="Line_PCr_Copy2" Stretch="Fill" Stroke="Black" X2="1" Margin="506.333,114.997,0,0" Fill="Black" StrokeThickness="1.7" RenderTransformOrigin="0.5,0.5" Height="5" Width="20" VerticalAlignment="Top" HorizontalAlignment="Left">
                         <Line.RenderTransform>
                             <TransformGroup>
@@ -270,7 +268,6 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <TextBlock x:Name="Text_ACw_Copy4" HorizontalAlignment="Left" Height="18" Margin="545.648,146.154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49.333" FontWeight="Bold" FontSize="14"><Run Text="R"/><Run Text="E"/><Run Text="Mw"/><LineBreak/><Run/></TextBlock>
                     <Line x:Name="Line_ACw_Copy4" Stretch="Fill" Stroke="Black" X2="1" Margin="556.308,171.154,0,0" Fill="Black" StrokeThickness="1.7" RenderTransformOrigin="0.5,0.5" Height="5" Width="20" VerticalAlignment="Top" HorizontalAlignment="Left">
                         <Line.RenderTransform>
                             <TransformGroup>
@@ -281,7 +278,6 @@
                             </TransformGroup>
                         </Line.RenderTransform>
                     </Line>
-                    <TextBox HorizontalAlignment="Left" Height="59" Margin="487,172,0,0" TextWrapping="Wrap" Text="REM" VerticalAlignment="Top" Width="147" IsReadOnly="True" Cursor="Arrow" FontSize="18" TextDecorations="{x:Null}" FontWeight="Bold" ToolTip="Registrador de Endereços da Memória" VerticalContentAlignment="Center" TextAlignment="Center"/>
                     <Line HorizontalAlignment="Left" VerticalAlignment="Top" Stroke="Black"
                         X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
                         StrokeDashArray="2 2" StrokeThickness="3" Margin="600,52,0,0" RenderTransformOrigin="0.5,0.5" Height="6" Width="126" >
@@ -733,13 +729,18 @@
                     <Button x:Name="BT_LoadArchive" Content="Load Archive" HorizontalAlignment="Left" Height="56" Margin="9,-84,0,0" VerticalAlignment="Top" Width="123" Background="#FFC3C3C3" FontSize="14" Click="BT_LoadArchive_Click"/>
                     <GroupBox Header="Configurações Thread" HorizontalAlignment="Left" Height="101" Margin="420,-108,0,0" VerticalAlignment="Top" Width="208" BorderBrush="Black"/>
                     <Label x:Name="LB_CyclicTimeThreadPH1" Content="Tempo ThreadPH1:" Margin="428,-43,0,0" BorderBrush="#FF707070" BorderThickness="1" Background="#00000000" HorizontalAlignment="Left" Width="184" Height="28" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
-                    <TextBox x:Name="TB_Clock" HorizontalAlignment="Left" Height="35" Margin="663,-84,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="159" KeyDown="TB_Clock_KeyDown"/>
+                    <TextBox x:Name="TB_Clock" HorizontalAlignment="Left" Height="35" Margin="663,-84,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Width="159" KeyDown="TB_Clock_KeyDown"/>
 
 
                 </Grid>
             </TabItem>
             <TabItem Header="Assembler PH1" Margin="-2,-2,-11,0">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="29*"/>
+                        <ColumnDefinition Width="670*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
 
             </TabItem>
 

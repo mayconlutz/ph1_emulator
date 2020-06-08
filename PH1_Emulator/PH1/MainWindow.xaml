@@ -7,7 +7,8 @@
         xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" xmlns:Forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" x:Class="PH1.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="1004" Width="1470.5">
-    <Grid>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid>
         <TabControl Margin="10,60,0,0" HorizontalAlignment="Left" Width="1404" Height="903" VerticalAlignment="Top">
             <TabItem Header="Simulador PH1" Margin="-2,-2,-2,0">
 
@@ -97,7 +98,7 @@
                     </Line>
                     <Line Stretch="Fill" Stroke="Black" X2="1" Margin="377,85,0,0" Fill="Black" StrokeThickness="1.7" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="119"/>
                     <Line Stretch="Fill" Stroke="Black" X2="1" Margin="365.706,314.286,0,0" Fill="Black" StrokeThickness="1.7" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="69"/>
-                    <Line Stretch="Fill" Stroke="Black" X2="1" Margin="317,200,0,0" Fill="Black" StrokeThickness="1.7" Height="5" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="232">
+                    <Line x:Name="BarramentoA_1" Stretch="Fill" Stroke="Black" X2="1" Margin="317,200,0,0" Fill="Black" StrokeThickness="1.7" Height="5" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="232">
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -270,7 +271,7 @@
                         </Line.RenderTransform>
                     </Line>
                     <TextBlock x:Name="Text_ACw_Copy4" HorizontalAlignment="Left" Height="18" Margin="545.648,146.154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49.333" FontWeight="Bold" FontSize="14"><Run Text="R"/><Run Text="E"/><Run Text="Mw"/><LineBreak/><Run/></TextBlock>
-                    <Line x:Name="Line_ACw_Copy4" Stretch="Fill" Stroke="Black" X2="1" Margin="556.308,171.154,0,0" Fill="Black" StrokeThickness="1.7" RenderTransformOrigin="0.5,0.5" Height="5" Width="20" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Line x:Name="Line_REMw" Stretch="Fill" Stroke="Black" X2="1" Margin="556.308,171.154,0,0" Fill="Black" StrokeThickness="1.7" RenderTransformOrigin="0.5,0.5" Height="5" Width="20" VerticalAlignment="Top" HorizontalAlignment="Left">
                         <Line.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -733,6 +734,7 @@
                     <GroupBox Header="Configurações Thread" HorizontalAlignment="Left" Height="101" Margin="420,-108,0,0" VerticalAlignment="Top" Width="208" BorderBrush="Black"/>
                     <Label x:Name="LB_CyclicTimeThreadPH1" Content="Tempo ThreadPH1:" Margin="428,-43,0,0" BorderBrush="#FF707070" BorderThickness="1" Background="#00000000" HorizontalAlignment="Left" Width="184" Height="28" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
                     <TextBox x:Name="TB_Clock" HorizontalAlignment="Left" Height="35" Margin="663,-84,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="159" KeyDown="TB_Clock_KeyDown"/>
+                    <ListBox x:Name="LB_logInstructions" HorizontalAlignment="Left" Height="297" Margin="852,332,0,0" VerticalAlignment="Top" Width="232" Background="Black" Foreground="Lime"/>
 
 
                 </Grid>
@@ -826,4 +828,5 @@
 
         </TabControl>
     </Grid>
+    </ScrollViewer>
 </Window>

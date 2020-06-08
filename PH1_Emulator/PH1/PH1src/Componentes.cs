@@ -182,6 +182,8 @@ namespace PH1.PH1src
             }
         }
 
+        public byte Valor_RDM { get => _Valor_RDM; }
+
         #endregion
 
         ///Armazena o endereço onde deve ser feita apróxima operação de leitura ou escrita na memória
@@ -382,6 +384,7 @@ namespace PH1.PH1src
         internal Logs logs { get => _logs; set => _logs = value; }
 
         public byte _BarramentoRI { get => BarramentoRI;}
+
         public byte[] _MEM { get => MEM; set => MEM = value; }
 
     }

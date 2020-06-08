@@ -94,6 +94,7 @@ namespace PH1.PH1src
                     {
                         CicloClock = 0;
                         logs.AddUC = "4 - Ir p/ 0";
+                        logs.AddInstrucoes = "NOP";
                     }
                     else if (Opcode == typeInstrutions.NOT) //Se RI=='NOT' (NOT)
                     {
@@ -101,10 +102,13 @@ namespace PH1.PH1src
                         ACc = true;
                         CicloClock+=1;
                         logs.AddUC = "4 - AC <- !AC";
+                        logs.AddInstrucoes = "NOT";
                     }
                     else if (Opcode == typeInstrutions.HLT) //Se RI== 'HLT'(HLT)
                     {
                         throw new NotImplementedException();
+
+                        logs.AddInstrucoes = "HLT";
                     }
                     break;
                 //Ciclo 5
@@ -117,7 +121,8 @@ namespace PH1.PH1src
                     if (Opcode == typeInstrutions.NOT)
                     {
                         CicloClock = 0;
-                        logs.AddUC = "5 - REM <- PC";
+                        logs.AddUC = "5 - Ir p/ 0";
+                        //logs.AddInstrucoes = "NOT";
                     }
                     //Opção 2
                     //Se for RI!= 'NOT'(NOT)
@@ -151,7 +156,13 @@ namespace PH1.PH1src
                             RDMr = true;
                             PCw = true;
                             logs.AddUC = "7 - Se (AC==0) PC <- RDM";
+                            logs.AddInstrucoes = "JEQ " + Valor_RDM.ToString("X2") + " ; (AC==0) PC <- [" + Valor_RDM.ToString("X2") + "]";
                         }
+                        else
+                        {
+                            logs.AddInstrucoes = "JEQ " + Valor_RDM.ToString("X2") + " ; !(AC==0)";
+                        }
+                        
                     }
                     else if (Opcode == typeInstrutions.JG_end)
                     {
@@ -160,6 +171,11 @@ namespace PH1.PH1src
                             RDMr = true;
                             PCw = true;
                             logs.AddUC = "7 - Se (AC>0) PC <- RDM";
+                            logs.AddInstrucoes = "JG " + Valor_RDM.ToString("X2") + " ; (AC > 0) PC <- [" + Valor_RDM.ToString("X2") + "]";
+                        }
+                        else
+                        {
+                            logs.AddInstrucoes = "JG " + Valor_RDM.ToString("X2") + " ; !(AC > 0)";
                         }
                     }
                     else if(Opcode == typeInstrutions.JL_end)
@@ -169,10 +185,54 @@ namespace PH1.PH1src
                             RDMr = true;
                             PCw = true;
                             logs.AddUC = "7 - Se (AC<0) PC <- RDM";
+                            logs.AddInstrucoes = "JL " + Valor_RDM.ToString("X2") + " ; (AC < 0) PC <- [" + Valor_RDM.ToString("X2") + "]";
+                        }
+                        else
+                        {
+                            logs.AddInstrucoes = "JL " + Valor_RDM.ToString("X2") + " ; !(AC < 0)";
                         }
                     }
                     else
                     {
+                        //============================================
+                        //Adiciona no log de instruções as instruções executadas.
+                        if (Opcode == typeInstrutions.LDR_end)
+                        {
+                            logs.AddInstrucoes = "LDR " + Valor_RDM.ToString("X2") + " ; AC <- MEM[" + Valor_RDM.ToString("X2") + "]";
+                        }
+                        else if (Opcode == typeInstrutions.STR_end)
+                        {
+                            logs.AddInstrucoes = "STR " + Valor_RDM.ToString("X2") + " ; MEM[" + Valor_RDM.ToString("X2") + "] <- AC";
+                        }
+                        else if (Opcode == typeInstrutions.ADD_end)
+                        {
+                            logs.AddInstrucoes = "ADD " + Valor_RDM.ToString("X2") + " ; AC <- AC + MEM[" + Valor_RDM.ToString("X2") + "] <- AC";
+                        }
+                        else if (Opcode == typeInstrutions.SUB_end)
+                        {
+                            logs.AddInstrucoes = "SUB " + Valor_RDM.ToString("X2") + " ; AC <- AC - MEM[" + Valor_RDM.ToString("X2") + "] <- AC";
+                        }
+                        else if (Opcode == typeInstrutions.MUL_end)
+                        {
+                            logs.AddInstrucoes = "MUL " + Valor_RDM.ToString("X2") + " ; AC <- AC * MEM[" + Valor_RDM.ToString("X2") + "] <- AC";
+                        }
+                        else if (Opcode == typeInstrutions.DIV_end)
+                        {
+                            logs.AddInstrucoes = "DIV " + Valor_RDM.ToString("X2") + " ; AC <- AC / MEM[" + Valor_RDM.ToString("X2") + "] <- AC";
+                        }
+                        else if (Opcode == typeInstrutions.AND_end)
+                        {
+                            logs.AddInstrucoes = "AND " + Valor_RDM.ToString("X2") + " ; AC <- AC & MEM[" + Valor_RDM.ToString("X2") + "] <- AC";
+                        }
+                        else if (Opcode == typeInstrutions.OR_end)
+                        {
+                            logs.AddInstrucoes = "OR " + Valor_RDM.ToString("X2") + " ; AC <- AC | MEM[" + Valor_RDM.ToString("X2") + "] <- AC";
+                        }
+                        else if (Opcode == typeInstrutions.XOR_end)
+                        {
+                            logs.AddInstrucoes = "XOR " + Valor_RDM.ToString("X2") + " ; AC <- AC ^ MEM[" + Valor_RDM.ToString("X2") + "] <- AC";
+                        }
+                        //============================================
                         RDMr = true;
                         REMw = true;
                         logs.AddUC = "7 - REM <- RDM";
@@ -230,7 +290,6 @@ namespace PH1.PH1src
                         RDMr = true;
                         ACw = true;
                         logs.AddUC = "9 - AC <- RDM";
-                        //logs.AddUC = "9 - LDR " + Valor_REM.ToString("X2") + " ; AC <- MEM["+ Valor_REM.ToString("X2") + "]";
                     }
                     else if (Opcode == typeInstrutions.STR_end)
                     {
@@ -290,6 +349,7 @@ namespace PH1.PH1src
                     {
                         CicloClock = 0;
                         logs.AddUC = "9 - Ir p/ 0";
+                        logs.AddInstrucoes = "JMP " + Valor_RDM.ToString("X2") + " ; PC <- [" + Valor_RDM.ToString("X2") + "]";
                         break;
                     }
 

@@ -30,6 +30,7 @@ namespace PH1_Emulator
         bool HabilitaLogUC;
         bool HabilitaDebugClock;
 
+        int sleepTimeThreadPH1 = 500;
         PH1.TabelaMemoria WindowTabelaMemoria;
 
         public MainWindow()
@@ -111,7 +112,7 @@ namespace PH1_Emulator
 
 
                 //Coloca o Thread para dormir, enviando o argumento do tempo em milessegundos.
-                System.Threading.Thread.Sleep(500);
+                System.Threading.Thread.Sleep(sleepTimeThreadPH1);
 
                 //Subtrai o tempo atual do tempo armazenado no inicio do laço, assim sabemos o tempo que levou para percorrer um ciclo do loop.
                 LB_CyclicTimeThreadPH1.Dispatcher.Invoke(delegate { LB_CyclicTimeThreadPH1.Content = (DateTime.Now - DT_ThreadPH1).ToString(); });
@@ -272,17 +273,7 @@ namespace PH1_Emulator
 
         private void TB_Clock_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if (!char.IsControl((char)e.Key) && !char.IsDigit((char)e.Key) &&
-             ((char)e.Key != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if (((char)e.Key == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
+            sleepTimeThreadPH1 = Convert.ToInt32(TB_Clock.Text);
         }
     }
 }

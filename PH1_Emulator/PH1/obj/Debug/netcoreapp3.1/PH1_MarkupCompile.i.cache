@@ -1,5 +1,5 @@
 ﻿PH1
-
+1.0.0.0
 
 winexe
 C#
@@ -12,7 +12,7 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\PH1\App.xaml
 22027539980
 
-9-776375918
+10662051443
 200-145464322
 MainWindow.xaml;PH1src\TabelaMemoria.xaml;
 

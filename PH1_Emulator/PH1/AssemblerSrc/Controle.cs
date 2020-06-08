@@ -111,7 +111,11 @@ namespace PH1.AssemblerSrc
                         MEM[auxAdress] = (byte)getAdressTS(keyWord);                     
                     }
                     auxAdress += 1;
-                    auxMnemonic = !auxMnemonic;
+
+                    if (keyWord != "NOP" && keyWord != "NOT" && keyWord != "HLT")
+                    {
+                        auxMnemonic = !auxMnemonic;
+                    }
                 }
             }
 

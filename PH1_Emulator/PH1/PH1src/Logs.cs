@@ -12,6 +12,7 @@ namespace PH1.PH1src
     {
         string string_Componentes = "";
         string string_UC = "";
+        string string_Instrucoes = "";
         int countItem = 0;
 
         /// <summary>
@@ -42,8 +43,24 @@ namespace PH1.PH1src
             }
         }
 
+        /// <summary>
+        /// Adiciona item de instruções executadas
+        /// </summary>
+        public string AddInstrucoes
+        { 
+            set
+            {
+                string_Instrucoes = value;
+
+                RaisePropertyChanged("Modificou Instrucoes");
+            }
+        
+        }
+
+
         public string getComponentes { get => string_Componentes;}
         public string getstring_UC { get => string_UC;}
+        public string getstring_Instrucoes { get => string_Instrucoes; }
 
         // Implementação da interface INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;

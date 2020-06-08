@@ -102,6 +102,16 @@ namespace PH1
             if (HabilitaLogUC && e.PropertyName.Equals("Modificou Log UC"))
             {
                 LB_logUnidadeControle.Dispatcher.Invoke(delegate { LB_logUnidadeControle.Items.Add(_PH1_Emulator.logs.getstring_UC); });
+
+                Line_REMw.Dispatcher.Invoke(delegate { Line_REMw.Stroke = new SolidColorBrush(Color.FromRgb(0, 255, 0)); });
+                Line_PCr.Dispatcher.Invoke(delegate { Line_PCr.Stroke = new SolidColorBrush(Color.FromRgb(0, 255, 0)); });             
+                BarramentoA_1.Dispatcher.Invoke(delegate { BarramentoA_1.Stroke = new SolidColorBrush(Color.FromRgb(0, 255, 0)); });
+                
+            }
+
+            if (e.PropertyName.Equals("Modificou Instrucoes"))
+            {
+                LB_logInstructions.Dispatcher.Invoke(delegate { LB_logInstructions.Items.Add(_PH1_Emulator.logs.getstring_Instrucoes); });
             }
 
         }
@@ -125,7 +135,7 @@ namespace PH1
 
 
                 //Coloca o Thread para dormir, enviando o argumento do tempo em milessegundos.
-                System.Threading.Thread.Sleep(500);
+                System.Threading.Thread.Sleep(100);
 
                 //Subtrai o tempo atual do tempo armazenado no inicio do laço, assim sabemos o tempo que levou para percorrer um ciclo do loop.
                 LB_CyclicTimeThreadPH1.Dispatcher.Invoke(delegate { LB_CyclicTimeThreadPH1.Content = (DateTime.Now - DT_ThreadPH1).ToString(); });

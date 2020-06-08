@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "329w0SxZLP+8S3hfczj/FACVsLk43XrzAL2l3Ju0V3OKJgmmccfndt8FqUBJbxChST0lwk2J/hIZ55osdPGAGQ==",
+  "dgSpecHash": "n0b+ttoLFP61xCYYbeo86ZAV3CDpfvkJI8M+3FB1yMyaDN9B+h44yibE7pQu4+3kJU3mPbcSqArHZnD++Ovsgw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Maycon\\source\\repos\\mayconlutz\\ph1_emulator\\PH1_Emulator\\ICSharpCode.AvalonEdit\\ICSharpCode.AvalonEdit.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Maycon\\.nuget\\packages\\microsoft.build.tasks.git\\1.0.0\\microsoft.build.tasks.git.1.0.0.nupkg.sha512",
     "C:\\Users\\Maycon\\.nuget\\packages\\microsoft.sourcelink.common\\1.0.0\\microsoft.sourcelink.common.1.0.0.nupkg.sha512",
-    "C:\\Users\\Maycon\\.nuget\\packages\\microsoft.sourcelink.github\\1.0.0\\microsoft.sourcelink.github.1.0.0.nupkg.sha512"
+    "C:\\Users\\Maycon\\.nuget\\packages\\microsoft.sourcelink.github\\1.0.0\\microsoft.sourcelink.github.1.0.0.nupkg.sha512",
+    "C:\\Users\\Maycon\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.0.1\\microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512",
+    "C:\\Users\\Maycon\\.nuget\\packages\\microsoft.netcore.app.ref\\3.0.0\\microsoft.netcore.app.ref.3.0.0.nupkg.sha512",
+    "C:\\Users\\Maycon\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.0.0\\microsoft.windowsdesktop.app.ref.3.0.0.nupkg.sha512"
   ],
   "logs": []
 }
