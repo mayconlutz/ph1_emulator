@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "PH1/1.0.0": {
+        "dependencies": {
+          "AvalonEdit": "6.1.0"
+        },
+        "runtime": {
+          "PH1.dll": {}
+        }
+      },
+      "AvalonEdit/6.1.0": {
+        "runtime": {
+          "ICSharpCode.AvalonEdit.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PH1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AvalonEdit/6.1.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

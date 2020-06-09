@@ -44,6 +44,7 @@ namespace PH1
         bool HabilitaLogComponentes;
         bool HabilitaLogUC;
         bool HabilitaDebugClock;
+        int InstrucoesExecutadas = 0;
 
         PH1src.TabelaMemoria WindowTabelaMemoria;
 
@@ -81,6 +82,15 @@ namespace PH1
             ThreadPH1.IsBackground = true;
             ThreadPH1.Start();
 
+            DesactiveLines();
+
+            TB_PC_VALUE_DEC.Dispatcher.Invoke(delegate { TB_PC_VALUE_DEC.Text = _PH1_Emulator.Valor_PC.ToString(); });
+            TB_PC_VALUE_HEX.Dispatcher.Invoke(delegate { TB_PC_VALUE_HEX.Text = "0x" + _PH1_Emulator.Valor_PC.ToString("X2"); });
+            TB_PC_VALUE_BIN.Dispatcher.Invoke(delegate { TB_PC_VALUE_BIN.Text = Convert.ToString(_PH1_Emulator.Valor_PC, 2).PadLeft(8, '0'); });
+
+            TB_AC_VALUE_DEC.Dispatcher.Invoke(delegate { TB_AC_VALUE_DEC.Text = _PH1_Emulator.Valor_AC.ToString(); });
+            TB_AC_VALUE_HEX.Dispatcher.Invoke(delegate { TB_AC_VALUE_HEX.Text = "0x" + _PH1_Emulator.Valor_AC.ToString("X2"); });
+            TB_AC_VALUE_BIN.Dispatcher.Invoke(delegate { TB_AC_VALUE_BIN.Text = Convert.ToString(_PH1_Emulator.Valor_AC, 2).PadLeft(8, '0'); });
 
         }
 
@@ -95,6 +105,31 @@ namespace PH1
             {
                 LB_logComponentes.Dispatcher.Invoke(delegate { LB_logComponentes.Items.Add(_PH1_Emulator.logs.getComponentes); });
 
+
+
+                #region Atualiza valores do PC e do AC na tela
+
+                if (_PH1_Emulator.logs.getComponentes.Contains("PCw Executado - Valor PC <- Barramento A") ||
+                    _PH1_Emulator.logs.getComponentes.Contains("PC+ Executado - Valor PC <- Valor PC + 1")
+                    )
+                {
+                    TB_PC_VALUE_DEC.Dispatcher.Invoke(delegate { TB_PC_VALUE_DEC.Text = _PH1_Emulator.Valor_PC.ToString(); });
+                    TB_PC_VALUE_HEX.Dispatcher.Invoke(delegate { TB_PC_VALUE_HEX.Text = "0x"+_PH1_Emulator.Valor_PC.ToString("X2"); });
+                    TB_PC_VALUE_BIN.Dispatcher.Invoke(delegate { TB_PC_VALUE_BIN.Text =  Convert.ToString(_PH1_Emulator.Valor_PC,2).PadLeft(8,'0'); });
+
+                }
+
+                if (_PH1_Emulator.logs.getComponentes.Contains("ACw Executado - Valor AC <- Barramento A") ||
+                    _PH1_Emulator.logs.getComponentes.Contains("ACc Executado - Valor AC <- Barramento C")
+                    )
+                {
+                    TB_AC_VALUE_DEC.Dispatcher.Invoke(delegate { TB_AC_VALUE_DEC.Text = _PH1_Emulator.Valor_AC.ToString(); });
+                    TB_AC_VALUE_HEX.Dispatcher.Invoke(delegate { TB_AC_VALUE_HEX.Text = "0x" + _PH1_Emulator.Valor_AC.ToString("X2"); });
+                    TB_AC_VALUE_BIN.Dispatcher.Invoke(delegate { TB_AC_VALUE_BIN.Text = Convert.ToString(_PH1_Emulator.Valor_AC, 2).PadLeft(8, '0'); });
+                }
+
+                #endregion
+
             }
 
             CB_AtivaDesativaLogUnidadeControle.Dispatcher.Invoke(delegate { HabilitaLogUC = (bool)CB_AtivaDesativaLogUnidadeControle.IsChecked; });
@@ -103,16 +138,213 @@ namespace PH1
             {
                 LB_logUnidadeControle.Dispatcher.Invoke(delegate { LB_logUnidadeControle.Items.Add(_PH1_Emulator.logs.getstring_UC); });
 
-                Line_REMw.Dispatcher.Invoke(delegate { Line_REMw.Stroke = new SolidColorBrush(Color.FromRgb(0, 255, 0)); });
-                Line_PCr.Dispatcher.Invoke(delegate { Line_PCr.Stroke = new SolidColorBrush(Color.FromRgb(0, 255, 0)); });             
-                BarramentoA_1.Dispatcher.Invoke(delegate { BarramentoA_1.Stroke = new SolidColorBrush(Color.FromRgb(0, 255, 0)); });
-                
+                //Ativa e desativa as linhas conforme o log 
+                DesactiveLines();
+
+
+                if (_PH1_Emulator.logs.getstring_UC.Contains("REM <- PC"))
+                {
+                    ActiveBarramentoA();
+                    Line_PCr.Dispatcher.Invoke(delegate { Line_PCr.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                    Line_REMw.Dispatcher.Invoke(delegate { Line_REMw.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                }
+
+                if (_PH1_Emulator.logs.getstring_UC.Contains("RDM <- MEM"))
+                {
+                    Line_MEMr.Dispatcher.Invoke(delegate { Line_MEMr.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                    Line_MEMr_1.Dispatcher.Invoke(delegate { Line_MEMr_1.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                    Line_RDM_1.Dispatcher.Invoke(delegate { Line_RDM_1.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                }
+
+                if (_PH1_Emulator.logs.getstring_UC.Contains("PC <- PC + 1"))
+                {
+                    Line_PCmais.Dispatcher.Invoke(delegate { Line_PCmais.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                    Line_PCmais_1.Dispatcher.Invoke(delegate { Line_PCmais_1.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                    Line_PCmais_2.Dispatcher.Invoke(delegate { Line_PCmais_2.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                    Line_PCmais_3.Dispatcher.Invoke(delegate { Line_PCmais_3.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                    Line_PCmais_4.Dispatcher.Invoke(delegate { Line_PCmais_4.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                    Line_PCmais_5.Dispatcher.Invoke(delegate { Line_PCmais_5.Foreground = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                }
+
+                if (_PH1_Emulator.logs.getstring_UC.Contains("RI <- RDM7..4"))
+                {
+                    Line_RDMr.Dispatcher.Invoke(delegate { Line_RDMr.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                    ActiveBarramentoA();
+                    Line_RIw.Dispatcher.Invoke(delegate { Line_RIw.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                }
+
+                if (_PH1_Emulator.logs.getstring_UC.Contains("REM <- RDM"))
+                {
+                    Line_RDMr.Dispatcher.Invoke(delegate { Line_RDMr.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                    ActiveBarramentoA();
+                    Line_REMw.Dispatcher.Invoke(delegate { Line_REMw.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+
+                }
+
+                if (_PH1_Emulator.logs.getstring_UC.Contains("AC <- RDM"))
+                {
+                    Line_RDMr.Dispatcher.Invoke(delegate { Line_RDMr.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                    ActiveBarramentoA();
+                    Line_ACw.Dispatcher.Invoke(delegate { Line_ACw.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                }
+
+
+                if (_PH1_Emulator.logs.getstring_UC.Contains("RDM <- AC"))
+                {
+                    Line_ACr.Dispatcher.Invoke(delegate { Line_ACr.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                    ActiveBarramentoA();
+                    Line_RDMw.Dispatcher.Invoke(delegate { Line_RDMw.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                }
+
+
+                if (_PH1_Emulator.logs.getstring_UC.Contains("9 - MEM["))
+                {
+                    Line_MEMw.Dispatcher.Invoke(delegate { Line_MEMw.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                    Line_REMw1.Dispatcher.Invoke(delegate { Line_REMw1.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+
+                }
+
+
+                if (_PH1_Emulator.logs.getstring_UC.Contains("AC <- AC + ") ||
+                    _PH1_Emulator.logs.getstring_UC.Contains("AC <- AC - ") ||
+                    _PH1_Emulator.logs.getstring_UC.Contains("AC <- AC * ") ||
+                    _PH1_Emulator.logs.getstring_UC.Contains("AC <- AC / ") ||
+                    _PH1_Emulator.logs.getstring_UC.Contains("AC <- AC & ") ||
+                    _PH1_Emulator.logs.getstring_UC.Contains("AC <- AC | ") ||
+                    _PH1_Emulator.logs.getstring_UC.Contains("AC <- AC ^ ")
+                    )
+                {
+                    Line_RDMr.Dispatcher.Invoke(delegate { Line_RDMr.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                    ActiveBarramentoA();
+                    ActiveBarramentoB();
+                    Line_ACc1.Dispatcher.Invoke(delegate { Line_ACc1.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                    ActiveBarramentoC();
+                }
+
+                if (_PH1_Emulator.logs.getstring_UC.Contains("AC <- !AC"))
+                {
+                    ActiveBarramentoB();
+                    Line_ACc1.Dispatcher.Invoke(delegate { Line_ACc1.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                    ActiveBarramentoC();
+                }
+
+                if (_PH1_Emulator.logs.getstring_UC.Contains("PC <- RDM"))
+                {
+                    Line_RDMr.Dispatcher.Invoke(delegate { Line_RDMr.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                    ActiveBarramentoA();
+                    Line_PCw.Dispatcher.Invoke(delegate { Line_PCw.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                }
+
             }
 
             if (e.PropertyName.Equals("Modificou Instrucoes"))
             {
                 LB_logInstructions.Dispatcher.Invoke(delegate { LB_logInstructions.Items.Add(_PH1_Emulator.logs.getstring_Instrucoes); });
+
+
+
+
+                InstrucoesExecutadas += 1;
+                LB_LogInsutrucoes.Dispatcher.Invoke(delegate { LB_LogInsutrucoes.Content = "Total de " + InstrucoesExecutadas + " instruções executadas."; });
             }
+
+
+            //Seleciona o ultimo item da lista e mostra no scroll o item, para poder rolar automaticamente para baixo a cada atualização
+            LB_logComponentes.Dispatcher.Invoke(delegate { LB_logComponentes.SelectedIndex = LB_logComponentes.Items.Count - 1; });
+            LB_logComponentes.Dispatcher.Invoke(delegate { LB_logComponentes.ScrollIntoView(LB_logComponentes.SelectedItem); });
+
+            //Seleciona o ultimo item da lista e mostra no scroll o item, para poder rolar automaticamente para baixo a cada atualização
+            LB_logUnidadeControle.Dispatcher.Invoke(delegate { LB_logUnidadeControle.SelectedIndex = LB_logUnidadeControle.Items.Count - 1; });
+            LB_logUnidadeControle.Dispatcher.Invoke(delegate { LB_logUnidadeControle.ScrollIntoView(LB_logUnidadeControle.SelectedItem); });
+
+            //Seleciona o ultimo item da lista e mostra no scroll o item, para poder rolar automaticamente para baixo a cada atualização
+            LB_logInstructions.Dispatcher.Invoke(delegate { LB_logInstructions.SelectedIndex = LB_logInstructions.Items.Count - 1; });
+            LB_logInstructions.Dispatcher.Invoke(delegate { LB_logInstructions.ScrollIntoView(LB_logInstructions.SelectedItem); });
+        }
+
+        private void ActiveBarramentoA()
+        {
+            BarramentoA_1.Dispatcher.Invoke(delegate { BarramentoA_1.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+            BarramentoA_2.Dispatcher.Invoke(delegate { BarramentoA_2.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+            BarramentoA_3.Dispatcher.Invoke(delegate { BarramentoA_3.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+            BarramentoA_4.Dispatcher.Invoke(delegate { BarramentoA_4.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+            BarramentoA_5.Dispatcher.Invoke(delegate { BarramentoA_5.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+            BarramentoA_6.Dispatcher.Invoke(delegate { BarramentoA_6.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+            BarramentoA_7.Dispatcher.Invoke(delegate { BarramentoA_7.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+            BarramentoA_8.Dispatcher.Invoke(delegate { BarramentoA_8.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+            BarramentoA_9.Dispatcher.Invoke(delegate { BarramentoA_9.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+        }
+
+        private void ActiveBarramentoB()
+        {
+            BarramentoB_1.Dispatcher.Invoke(delegate { BarramentoB_1.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+            BarramentoB_2.Dispatcher.Invoke(delegate { BarramentoB_2.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+            BarramentoB_3.Dispatcher.Invoke(delegate { BarramentoB_3.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+            BarramentoB_4.Dispatcher.Invoke(delegate { BarramentoB_4.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+            BarramentoB_5.Dispatcher.Invoke(delegate { BarramentoB_5.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+            BarramentoB_6.Dispatcher.Invoke(delegate { BarramentoB_6.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+        }
+
+        private void ActiveBarramentoC()
+        {
+            BarramentoC_1.Dispatcher.Invoke(delegate { BarramentoC_1.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+            BarramentoC_2.Dispatcher.Invoke(delegate { BarramentoC_2.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+            BarramentoC_3.Dispatcher.Invoke(delegate { BarramentoC_3.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+        }
+
+        private void DesactiveLines()
+        {
+            //Barramento A
+            BarramentoA_1.Dispatcher.Invoke(delegate { BarramentoA_1.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            BarramentoA_2.Dispatcher.Invoke(delegate { BarramentoA_2.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            BarramentoA_3.Dispatcher.Invoke(delegate { BarramentoA_3.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            BarramentoA_4.Dispatcher.Invoke(delegate { BarramentoA_4.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            BarramentoA_5.Dispatcher.Invoke(delegate { BarramentoA_5.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            BarramentoA_6.Dispatcher.Invoke(delegate { BarramentoA_6.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            BarramentoA_7.Dispatcher.Invoke(delegate { BarramentoA_7.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            BarramentoA_8.Dispatcher.Invoke(delegate { BarramentoA_8.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            BarramentoA_9.Dispatcher.Invoke(delegate { BarramentoA_9.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+
+            BarramentoB_1.Dispatcher.Invoke(delegate { BarramentoB_1.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            BarramentoB_2.Dispatcher.Invoke(delegate { BarramentoB_2.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            BarramentoB_3.Dispatcher.Invoke(delegate { BarramentoB_3.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            BarramentoB_4.Dispatcher.Invoke(delegate { BarramentoB_4.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            BarramentoB_5.Dispatcher.Invoke(delegate { BarramentoB_5.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            BarramentoB_6.Dispatcher.Invoke(delegate { BarramentoB_6.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+
+            BarramentoC_1.Dispatcher.Invoke(delegate { BarramentoC_1.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            BarramentoC_2.Dispatcher.Invoke(delegate { BarramentoC_2.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            BarramentoC_3.Dispatcher.Invoke(delegate { BarramentoC_3.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+
+            Line_ACr.Dispatcher.Invoke(delegate { Line_ACr.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            Line_ACw.Dispatcher.Invoke(delegate { Line_ACw.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            Line_ACc1.Dispatcher.Invoke(delegate { Line_ACc1.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+
+            Line_PCr.Dispatcher.Invoke(delegate { Line_PCr.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            Line_PCw.Dispatcher.Invoke(delegate { Line_PCw.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            Line_PCmais.Dispatcher.Invoke(delegate { Line_PCmais.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            Line_PCmais_1.Dispatcher.Invoke(delegate { Line_PCmais_1.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            Line_PCmais_2.Dispatcher.Invoke(delegate { Line_PCmais_2.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            Line_PCmais_3.Dispatcher.Invoke(delegate { Line_PCmais_3.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            Line_PCmais_4.Dispatcher.Invoke(delegate { Line_PCmais_4.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            Line_PCmais_5.Dispatcher.Invoke(delegate { Line_PCmais_5.Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+
+            Line_MEMr.Dispatcher.Invoke(delegate { Line_MEMr.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            Line_MEMw.Dispatcher.Invoke(delegate { Line_MEMw.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            Line_MEMr_1.Dispatcher.Invoke(delegate { Line_MEMr_1.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            Line_MEMw_1.Dispatcher.Invoke(delegate { Line_MEMw_1.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+
+            Line_REMr.Dispatcher.Invoke(delegate { Line_REMr.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            Line_REMw.Dispatcher.Invoke(delegate { Line_REMw.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+
+            Line_RDMr.Dispatcher.Invoke(delegate { Line_RDMr.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            Line_RDMw.Dispatcher.Invoke(delegate { Line_RDMw.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+
+            Line_RI.Dispatcher.Invoke(delegate { Line_RI.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            Line_RIw.Dispatcher.Invoke(delegate { Line_RIw.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+
+            Line_RDM_1.Dispatcher.Invoke(delegate { Line_RDM_1.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
+            Line_REMw1.Dispatcher.Invoke(delegate { Line_REMw1.Stroke = new SolidColorBrush(Color.FromRgb(255, 0, 0)); });
 
         }
 
@@ -226,6 +458,7 @@ namespace PH1
             mrse.Reset();
             byte[] MEM = new byte[256];
             _PH1_Emulator._MEM = MEM;
+            InstrucoesExecutadas = 0;
         }
 
         private void LB_logComponentes_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)

@@ -35,6 +35,7 @@ namespace PH1.AssemblerSrc
             getWordFromTextEditor(ref text, tamanho, false);
             getWordFromTextEditor(ref text, tamanho, true);
 
+            auxMnemonic = false;
             return 0;
         }
 

@@ -343,7 +343,7 @@ namespace PH1.PH1src
                         RDMr = true;
                         ULA(typeULAop.xor);
                         ACc = true;
-                        logs.AddUC = "9 - AC <- AC * RDM";
+                        logs.AddUC = "9 - AC <- AC ^ RDM";
                     }
                     else
                     {
