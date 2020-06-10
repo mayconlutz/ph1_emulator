@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:PH1"
         xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" xmlns:Forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" x:Class="PH1.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1004" Width="1470.5">
+        Title="MainWindow" Height="926" Width="1548">
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
         <Grid>
-            <TabControl Margin="10,60,0,0" HorizontalAlignment="Left" Width="1404" Height="903" VerticalAlignment="Top">
+            <TabControl Margin="0,60,0,0" HorizontalAlignment="Center" Width="1527" Height="837" VerticalAlignment="Top">
                 <TabItem Header="Simulador PH1" Margin="-2,-2,-2,0">
 
-                    <Grid x:Name="Line_ACc" Background="#FFE5E5E5" Height="764" Margin="0,106,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1369">
+                    <Grid x:Name="Line_ACc" Background="#FFE5E5E5" Height="678" Margin="0,106,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1518">
                         <Line x:Name="BarramentoA_3" Stretch="Fill" Stroke="Black" X2="1" Margin="381,200,0,0" Fill="Black" StrokeThickness="1.7" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="119"/>
                         <Line x:Name="Line_ACr" Stretch="Fill" Stroke="Black" X2="1" Margin="251,298.666,0,0" Fill="Black" StrokeThickness="1.7" RenderTransformOrigin="0.5,0.5" Height="5" Width="20" VerticalAlignment="Top" HorizontalAlignment="Left">
                             <Line.RenderTransform>
@@ -36,10 +36,10 @@
                                 </TransformGroup>
                             </Line.RenderTransform>
                         </Line>
-                        <ListBox x:Name="LB_logComponentes" HorizontalAlignment="Left" Height="256" Margin="852,45,0,0" VerticalAlignment="Top" Width="507" Background="Black" Foreground="Lime" ScrollViewer.CanContentScroll="False"/>
+                        <ListBox x:Name="LB_logComponentes" HorizontalAlignment="Left" Height="256" Margin="1002,45,0,0" VerticalAlignment="Top" Width="507" Background="Black" Foreground="Lime" ScrollViewer.CanContentScroll="False"/>
 
-                        <CheckBox x:Name="CB_AtivaDesativaLogComponentes" Content="Ativa/Desativa Log" HorizontalAlignment="Left" Margin="1236,26,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonDown="CB_AtivaDesativaLogComponentes_PreviewMouseLeftButtonDown" IsChecked="True"/>
-                        <Label Content="Logs Componentes:" HorizontalAlignment="Left" Margin="851,19,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="CB_AtivaDesativaLogComponentes" Content="Ativa/Desativa Log" HorizontalAlignment="Left" Margin="1386,26,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonDown="CB_AtivaDesativaLogComponentes_PreviewMouseLeftButtonDown" IsChecked="True"/>
+                        <Label Content="Logs Componentes:" HorizontalAlignment="Left" Margin="1001,19,0,0" VerticalAlignment="Top"/>
                         <TextBlock x:Name="Text_ACr" HorizontalAlignment="Left" Height="18" Margin="249,273,0,0" TextWrapping="Wrap" Text="ACr" VerticalAlignment="Top" Width="24" FontWeight="Bold" FontSize="14"/>
                         <TextBlock x:Name="Text_ACw" HorizontalAlignment="Left" Height="18" Margin="296,273,0,0" TextWrapping="Wrap" Text="ACw" VerticalAlignment="Top" Width="33" FontWeight="Bold" FontSize="14"/>
                         <TextBlock x:Name="Text_ACc" HorizontalAlignment="Left" Height="18" Margin="347,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" FontWeight="Bold" FontSize="14"><Run Text="AC"/><Run Text="c"/></TextBlock>
@@ -294,8 +294,8 @@
                                 </TransformGroup>
                             </Line.RenderTransform>
                         </Line>
-                        <TextBlock x:Name="Text_PCr_Copy4" HorizontalAlignment="Left" Height="18" Margin="651.334,5.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" FontWeight="Bold" FontSize="14"><Run Text="MEMr"/><LineBreak/><Run/></TextBlock>
-                        <TextBlock x:Name="Text_PCr_Copy5" HorizontalAlignment="Left" Height="18" Margin="651.334,30.997,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="51" FontWeight="Bold" FontSize="14"><Run Text="MEM"/><Run Text="w"/><LineBreak/><Run/></TextBlock>
+                        <TextBlock x:Name="Text_PCr_Copy4" HorizontalAlignment="Left" Height="18" Margin="621,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" FontWeight="Bold" FontSize="14"><Run Text="MEMr"/><LineBreak/><Run/></TextBlock>
+                        <TextBlock x:Name="Text_PCr_Copy5" HorizontalAlignment="Left" Height="18" Margin="621,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="51" FontWeight="Bold" FontSize="14"><Run Text="MEM"/><Run Text="w"/><LineBreak/><Run/></TextBlock>
                         <TextBlock HorizontalAlignment="Left" Height="23.017" Margin="440.039,282.286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="91.001" FontWeight="Bold"><Run Text="Barramento"/><Run Text=" "/><Run Text="A"/><LineBreak/><Run/></TextBlock>
                         <Line x:Name="BarramentoC_3" Stretch="Fill" Stroke="Black" X2="1" Margin="476.873,500.156,0,0" Fill="Black" StrokeThickness="1.7" Height="5" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="36.282">
                             <Line.RenderTransform>
@@ -323,226 +323,10 @@
                         <TextBox HorizontalAlignment="Left" Height="59" Margin="237,172,0,0" TextWrapping="Wrap" Text="PC" VerticalAlignment="Top" Width="147" IsReadOnly="True" Cursor="Arrow" FontSize="18" TextDecorations="{x:Null}" FontWeight="Bold" ToolTip="Program Counter" VerticalContentAlignment="Top" TextAlignment="Center"/>
                         <TextBox HorizontalAlignment="Left" Height="59" Margin="487,56,0,0" TextWrapping="Wrap" Text="RDM" VerticalAlignment="Top" Width="147" IsReadOnly="True" Cursor="Arrow" FontSize="18" TextDecorations="{x:Null}" FontWeight="Bold" ToolTip="Registrador de Dados da Memória" VerticalContentAlignment="Center" TextAlignment="Center"/>
                         <TextBox HorizontalAlignment="Left" Height="58" Margin="237,303,0,0" TextWrapping="Wrap" Text="AC" VerticalAlignment="Top" Width="147" IsReadOnly="True" Cursor="Arrow" FontSize="18" TextDecorations="{x:Null}" FontWeight="Bold" ToolTip="Acumulador" VerticalContentAlignment="Top" TextAlignment="Center" HorizontalContentAlignment="Left"/>
-                        <Line VerticalAlignment="Top" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="-56,123,1281,0" RenderTransformOrigin="0.5,0.5" Height="8" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="90"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
-                        <Line VerticalAlignment="Top" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="-46,123,1271,0" RenderTransformOrigin="0.5,0.5" Height="8" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="90"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
-                        <Line VerticalAlignment="Top" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="-36,123,1261,0" RenderTransformOrigin="0.5,0.5" Height="8" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="90"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
-                        <Line VerticalAlignment="Top" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="-26,123,1251,0" RenderTransformOrigin="0.5,0.5" Height="8" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="90"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
-                        <Line VerticalAlignment="Top" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="-16,123,1241,0" RenderTransformOrigin="0.5,0.5" Height="8" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="90"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
-                        <Line VerticalAlignment="Top" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="-6,123,1231,0" RenderTransformOrigin="0.5,0.5" Height="8" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="90"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
-                        <Line VerticalAlignment="Top" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="4,123,1221,0" RenderTransformOrigin="0.5,0.5" Height="8" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="90"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
-                        <Line VerticalAlignment="Top" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="14,123,1211,0" RenderTransformOrigin="0.5,0.5" Height="8" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="90"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
-                        <Line VerticalAlignment="Top" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="24,123,1201,0" RenderTransformOrigin="0.5,0.5" Height="8" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="90"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
-                        <Line VerticalAlignment="Top" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="34,123,1191,0" RenderTransformOrigin="0.5,0.5" Height="8" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="90"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
-                        <Line VerticalAlignment="Top" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="43,123,1181,0" RenderTransformOrigin="0.5,0.5" Height="8" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="90"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
-                        <Line VerticalAlignment="Top" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="53,123,1171,0" RenderTransformOrigin="0.5,0.5" Height="8" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="90"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
-                        <Line VerticalAlignment="Top" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="64,123,1161,0" RenderTransformOrigin="0.5,0.5" Height="8" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="90"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
-                        <Line VerticalAlignment="Top" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="74,123,1151,0" RenderTransformOrigin="0.5,0.5" Height="8" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="90"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
-                        <Line VerticalAlignment="Top" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="84,123,1141,0" RenderTransformOrigin="0.5,0.5" Height="8" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="90"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
-                        <Line VerticalAlignment="Top" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="-50,176,1342,0" RenderTransformOrigin="0.5,0.5" Height="8" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="1" ScaleY="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="-90"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
                         <TextBox HorizontalAlignment="Left" Height="75" Margin="7,50,0,0" TextWrapping="Wrap" Text="Decodificador" VerticalAlignment="Top" Width="164" TextAlignment="Center" IsReadOnly="True" Cursor="Arrow" FontSize="18" TextDecorations="{x:Null}" FontWeight="Bold" VerticalContentAlignment="Center" ToolTip="Decodificador"/>
                         <TextBox HorizontalAlignment="Left" Margin="7,164,0,0" TextWrapping="Wrap" Text="UC" Width="164" TextAlignment="Center" IsReadOnly="True" Cursor="Arrow" FontSize="18" TextDecorations="{x:Null}" FontWeight="Bold" VerticalContentAlignment="Center" Height="75" VerticalAlignment="Top" ToolTip="Unidade de Controle"/>
                         <TextBlock x:Name="Text_PCr_Copy6" HorizontalAlignment="Left" Height="18" Margin="8.749,396.921,0,0" TextWrapping="Wrap" Text="Legenda:" VerticalAlignment="Top" Width="77.167" FontWeight="Bold" FontSize="14"/>
-                        <Line HorizontalAlignment="Left" VerticalAlignment="Top" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2 2" StrokeThickness="3" Margin="-4,502,0,0" RenderTransformOrigin="0.5,0.5" Height="6" Width="68" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
                         <Line Stretch="Fill" Stroke="Black" X2="1" Margin="6.918,429.038,0,0" Fill="Black" StrokeThickness="1.7" Height="5" HorizontalAlignment="Left" Width="63.331" VerticalAlignment="Top"/>
-                        <Line HorizontalAlignment="Left" VerticalAlignment="Bottom" Stroke="Black"
-                        X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                        StrokeDashArray="2" StrokeThickness="2" Margin="-4,0,0,309" RenderTransformOrigin="0.5,0.5" Height="8" Width="63" >
-                            <Line.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleX="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Line.RenderTransform>
-                        </Line>
                         <Line Stretch="Fill" Stroke="Black" X2="1" Margin="5.749,483.249,0,0" Fill="Black" StrokeThickness="4" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="65.833"/>
                         <Line Stretch="Fill" Stroke="Black" X2="1" Margin="5.749,463.749,0,0" Fill="Black" StrokeThickness="4" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="65.833"/>
                         <TextBlock HorizontalAlignment="Left" Height="18.434" Margin="73.337,438.253,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231.001" FontWeight="Bold"><Run Text="Barramento"/><Run Text=" "/><Run Text="interno de controle."/></TextBlock>
@@ -565,10 +349,9 @@
                         </Line>
                         <TextBlock x:Name="Text_ACc_Copy" HorizontalAlignment="Left" Height="18" Margin="580.381,443.642,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" FontWeight="Bold" FontSize="14" Text="ULAop"/>
                         <TextBox HorizontalAlignment="Left" Height="91" Margin="414.006,409,0,0" TextWrapping="Wrap" Text="ULA" VerticalAlignment="Top" Width="164" TextAlignment="Center" IsReadOnly="True" Cursor="Arrow" FontSize="18" TextDecorations="{x:Null}" FontWeight="Bold" VerticalContentAlignment="Center" ToolTip="ULA"/>
-                        <Button x:Name="BT_ComponenteMEM" Content="MEM" HorizontalAlignment="Left" Height="320" Margin="708,6,0,0" VerticalAlignment="Top" Width="80" BorderBrush="Black" Background="White" FontWeight="Bold" FontSize="18" Click="BT_ComponenteMEM_Click"/>
-                        <ListBox x:Name="LB_logUnidadeControle" HorizontalAlignment="Left" Height="297" Margin="1123,332,0,0" VerticalAlignment="Top" Width="232" Background="Black" Foreground="Lime"/>
-                        <Label Content="Logs Unidade de Controle:" HorizontalAlignment="Left" Margin="1123,306,0,0" VerticalAlignment="Top"/>
-                        <CheckBox x:Name="CB_AtivaDesativaLogUnidadeControle" Content="Ativa/Desativa Log" HorizontalAlignment="Left" Margin="1130,631,0,0" VerticalAlignment="Top" IsChecked="True" PreviewMouseLeftButtonDown="CB_AtivaDesativaLogUnidadeControle_PreviewMouseLeftButtonDown"/>
+                        <ListBox x:Name="LB_logUnidadeControle" HorizontalAlignment="Left" Height="297" Margin="1273,332,0,0" VerticalAlignment="Top" Width="232" Background="Black" Foreground="Lime"/>
+                        <Label Content="Logs Unidade de Controle:" HorizontalAlignment="Left" Margin="1273,306,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="CB_AtivaDesativaLogUnidadeControle" Content="Ativa/Desativa Log" HorizontalAlignment="Left" Margin="1280,631,0,0" VerticalAlignment="Top" IsChecked="True" PreviewMouseLeftButtonDown="CB_AtivaDesativaLogUnidadeControle_PreviewMouseLeftButtonDown"/>
                         <GroupBox Header="Debug" HorizontalAlignment="Left" Height="101" Margin="189,-108,0,0" VerticalAlignment="Top" Width="208" BorderBrush="Black"/>
                         <Button x:Name="BT_PausePH1" Content="Pause" HorizontalAlignment="Left" Height="41" Margin="263,-79,0,0" VerticalAlignment="Top" Width="60" Click="BT_PausePH1_Click" Background="#FFFF9700" FontSize="20"/>
                         <Button x:Name="BT_PlayPH1" Content="Run" HorizontalAlignment="Left" Height="41" Margin="201,-79,0,0" VerticalAlignment="Top" Width="60" Background="#FF00FF3A" FontSize="20" Click="BT_PlayPH1_Click"/>
@@ -578,18 +361,29 @@
                         <GroupBox Header="Configurações Thread" HorizontalAlignment="Left" Height="101" Margin="420,-108,0,0" VerticalAlignment="Top" Width="208" BorderBrush="Black"/>
                         <Label x:Name="LB_CyclicTimeThreadPH1" Content="Tempo ThreadPH1:" Margin="428,-43,0,0" BorderBrush="#FF707070" BorderThickness="1" Background="#00000000" HorizontalAlignment="Left" Width="184" Height="28" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
                         <TextBox x:Name="TB_Clock" HorizontalAlignment="Left" Height="35" Margin="663,-84,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="159" KeyDown="TB_Clock_KeyDown"/>
-                        <ListBox x:Name="LB_logInstructions" HorizontalAlignment="Left" Height="297" Margin="852,332,0,0" VerticalAlignment="Top" Width="232" Background="Black" Foreground="Lime"/>
+                        <ListBox x:Name="LB_logInstructions" HorizontalAlignment="Left" Height="297" Margin="1002,332,0,0" VerticalAlignment="Top" Width="232" Background="Black" Foreground="Lime"/>
                         <TextBlock HorizontalAlignment="Left" Height="23" Margin="312,518,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" FontWeight="Bold"><Run Text="Barramento"/><Run Text=" "/><Run Language="pt-br" Text="C"/></TextBlock>
-                        <Label Content="Instruções Executadas:" HorizontalAlignment="Left" Margin="853,306,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="LB_LogInsutrucoes" Content="Total de 0 instruções executadas." HorizontalAlignment="Left" Margin="853,628,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                        <TextBox x:Name="TB_PC_VALUE_HEX" HorizontalAlignment="Left" Height="28" Margin="270,203,0,0" Text="0xFF" TextWrapping="Wrap" VerticalAlignment="Top" Width="39" FontWeight="Bold" FontSize="14" Background="{x:Null}" Foreground="Blue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True"/>
-                        <TextBox x:Name="TB_PC_VALUE_BIN" HorizontalAlignment="Left" Height="28" Margin="308,203,0,0" Text="00000000" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" FontWeight="Bold" FontSize="14" Background="{x:Null}" Foreground="Blue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True"/>
+                        <Label Content="Instruções Executadas:" HorizontalAlignment="Left" Margin="1003,306,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="LB_LogInsutrucoes" Content="Total de 0 instruções executadas." HorizontalAlignment="Left" Margin="1003,628,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                        <TextBox x:Name="TB_PC_VALUE_HEX" HorizontalAlignment="Left" Height="28" Margin="270,203,0,0" Text="0xAA" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" FontWeight="Bold" FontSize="14" Background="{x:Null}" Foreground="Blue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True"/>
+                        <TextBox x:Name="TB_PC_VALUE_BIN" HorizontalAlignment="Left" Height="28" Margin="311,203,0,0" Text="00000000" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" FontWeight="Bold" FontSize="14" Background="{x:Null}" Foreground="Blue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True"/>
                         <TextBox x:Name="TB_PC_VALUE_DEC" HorizontalAlignment="Left" Height="28" Margin="237,203,0,0" Text="255" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontWeight="Bold" FontSize="14" Background="{x:Null}" Foreground="Blue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True"/>
-                        <TextBox x:Name="TB_AC_VALUE_HEX" HorizontalAlignment="Left" Height="28" Margin="270,333,0,0" Text="0xFF" TextWrapping="Wrap" VerticalAlignment="Top" Width="39" FontWeight="Bold" FontSize="14" Background="{x:Null}" Foreground="Blue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True"/>
-                        <TextBox x:Name="TB_AC_VALUE_BIN" HorizontalAlignment="Left" Height="28" Margin="308,333,0,0" Text="00000000" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" FontWeight="Bold" FontSize="14" Background="{x:Null}" Foreground="Blue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True"/>
+                        <TextBox x:Name="TB_AC_VALUE_HEX" HorizontalAlignment="Left" Height="28" Margin="270,333,0,0" Text="0xAA" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" FontWeight="Bold" FontSize="14" Background="{x:Null}" Foreground="Blue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True"/>
+                        <TextBox x:Name="TB_AC_VALUE_BIN" HorizontalAlignment="Left" Height="28" Margin="311,333,0,0" Text="00000000" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" FontWeight="Bold" FontSize="14" Background="{x:Null}" Foreground="Blue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True"/>
                         <TextBox x:Name="TB_AC_VALUE_DEC" HorizontalAlignment="Left" Height="28" Margin="237,333,0,0" Text="255" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontWeight="Bold" FontSize="14" Background="{x:Null}" Foreground="Blue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True"/>
-
-
+                        <DataGrid x:Name="DT_Memory" HorizontalAlignment="Left" Height="612" Margin="671,17,0,0" VerticalAlignment="Top" Width="296" IsReadOnly="True">
+                            <DataGrid.RowStyle>
+                                <Style TargetType="DataGridRow">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" Value="Blue"/>
+                                            <Setter Property="Item" Value="Green"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.RowStyle>
+                        </DataGrid>
+                        
                     </Grid>
                 </TabItem>
                 <TabItem Header="Assembler PH1" Margin="-2,-2,-11,0">
@@ -672,8 +466,8 @@
                         </ToolBar>
                         <Button x:Name="BT_Assemble" Content="Assemble" HorizontalAlignment="Left" Height="20" Margin="292,4,0,0" VerticalAlignment="Top" Width="73" Click="BT_Assemble_Click" BorderBrush="#FF46FF00"/>
                         <Button x:Name="BT_LoadToSim" Content="Load to Sim" HorizontalAlignment="Left" Height="20" Margin="367,4,0,0" VerticalAlignment="Top" Width="73" Click="BT_LoadToSim_Click" BorderBrush="#FF0068FF"/>
-                        <DataGrid x:Name="DT_Code" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="370" Margin="1102,34,0,0" VerticalAlignment="Top" Width="296"/>
-                        <DataGrid x:Name="DT_TS" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="354" Margin="1102,407,0,0" VerticalAlignment="Top" Width="296"/>
+                        <DataGrid x:Name="DT_Code" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="370" Margin="1102,34,0,0" VerticalAlignment="Top" Width="296" IsReadOnly="True"/>
+                        <DataGrid x:Name="DT_TS" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="354" Margin="1102,407,0,0" VerticalAlignment="Top" Width="296" IsReadOnly="True"/>
 
                     </Grid>
 

@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyDescriptionAttribute("AvalonEdit is the WPF-based text editor used in SharpDevelop. There are three bui" +
     "lds of AvalonEdit included in this package: .NET 4.0, 4.5 and .NET Core 3.0.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("6.1.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("6.1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("6.1+429de766a2ef950eb0e42e0166481a8bb6c223de")]
 [assembly: System.Reflection.AssemblyProductAttribute("ICSharpCode.AvalonEdit")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ICSharpCode.AvalonEdit")]
 [assembly: System.Reflection.AssemblyVersionAttribute("6.1.0.0")]

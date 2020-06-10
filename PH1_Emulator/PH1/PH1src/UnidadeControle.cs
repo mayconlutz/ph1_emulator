@@ -374,5 +374,15 @@ namespace PH1.PH1src
             }
         }
 
+        /// <summary>
+        /// Limpa os componentes e também zera o clock
+        /// </summary>
+        public void ClearUC()
+        {
+            Clear();
+            CicloClock = 0;
+            logs.AddUC = "Clear";
+        }
+
     }
 }

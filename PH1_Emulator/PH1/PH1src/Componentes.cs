@@ -387,5 +387,25 @@ namespace PH1.PH1src
 
         public byte[] _MEM { get => MEM; set => MEM = value; }
 
+        /// <summary>
+        /// Limpa os valores dos componentes e dos barramentos
+        /// </summary>
+        public void Clear()
+        {
+            BarramentoA = 0;   
+            BarramentoB = 0;   
+            BarramentoC = 0;   
+            BarramentoREM = 0; 
+            BarramentoRDM = 0; 
+            BarramentoRI = 0;
+            _MEM = new byte[256];
+            _Valor_PC = 0;
+            _Valor_AC = 0;
+            _Valor_RDM = 0;
+            _Valor_REM = 0;
+            _logs.AddComponentes = "Clear";
+
+        }
+
     }
 }

@@ -39,7 +39,9 @@ namespace PH1
 
         //Declarando o Controle do PH1.
         PH1src.UnidadeControle _PH1_Emulator;
-        
+
+        //ManualResetEvent serve para colocar estados de sinalização nos Threads, ou seja 
+        ManualResetEvent mrse = new ManualResetEvent(false);
 
         bool HabilitaLogComponentes;
         bool HabilitaLogUC;
@@ -47,6 +49,8 @@ namespace PH1
         int InstrucoesExecutadas = 0;
 
         PH1src.TabelaMemoria WindowTabelaMemoria;
+
+        DataGridRow row;
 
         public MainWindow()
         {
@@ -82,6 +86,7 @@ namespace PH1
             ThreadPH1.IsBackground = true;
             ThreadPH1.Start();
 
+            //Desativa os barramentos
             DesactiveLines();
 
             TB_PC_VALUE_DEC.Dispatcher.Invoke(delegate { TB_PC_VALUE_DEC.Text = _PH1_Emulator.Valor_PC.ToString(); });
@@ -93,8 +98,12 @@ namespace PH1
             TB_AC_VALUE_BIN.Dispatcher.Invoke(delegate { TB_AC_VALUE_BIN.Text = Convert.ToString(_PH1_Emulator.Valor_AC, 2).PadLeft(8, '0'); });
 
         }
-
-        //Evento disparado quando ocorre uma mudança no valor da string de logs dos componentes.
+        
+        /// <summary>
+        /// Evento disparado quando ocorre uma mudança no valor da string de logs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Logs_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             //Adiciona a string no listbox de log dos componentes.
@@ -105,22 +114,34 @@ namespace PH1
             {
                 LB_logComponentes.Dispatcher.Invoke(delegate { LB_logComponentes.Items.Add(_PH1_Emulator.logs.getComponentes); });
 
+                #region Memória Atualiza
+
+                if (_PH1_Emulator.logs.getComponentes.Contains("MEMw Executado - MEM[BarramentoREM] <- Barramento RDM"))
+                {
+                    atualizaMemoria();
+                }
+
+                #endregion
 
 
                 #region Atualiza valores do PC e do AC na tela
 
                 if (_PH1_Emulator.logs.getComponentes.Contains("PCw Executado - Valor PC <- Barramento A") ||
-                    _PH1_Emulator.logs.getComponentes.Contains("PC+ Executado - Valor PC <- Valor PC + 1")
+                    _PH1_Emulator.logs.getComponentes.Contains("PC+ Executado - Valor PC <- Valor PC + 1") ||
+                     _PH1_Emulator.logs.getComponentes.Contains("Clear")
                     )
                 {
                     TB_PC_VALUE_DEC.Dispatcher.Invoke(delegate { TB_PC_VALUE_DEC.Text = _PH1_Emulator.Valor_PC.ToString(); });
                     TB_PC_VALUE_HEX.Dispatcher.Invoke(delegate { TB_PC_VALUE_HEX.Text = "0x"+_PH1_Emulator.Valor_PC.ToString("X2"); });
                     TB_PC_VALUE_BIN.Dispatcher.Invoke(delegate { TB_PC_VALUE_BIN.Text =  Convert.ToString(_PH1_Emulator.Valor_PC,2).PadLeft(8,'0'); });
 
+                    atualizaRowMemoria();
+
                 }
 
                 if (_PH1_Emulator.logs.getComponentes.Contains("ACw Executado - Valor AC <- Barramento A") ||
-                    _PH1_Emulator.logs.getComponentes.Contains("ACc Executado - Valor AC <- Barramento C")
+                    _PH1_Emulator.logs.getComponentes.Contains("ACc Executado - Valor AC <- Barramento C") ||
+                    _PH1_Emulator.logs.getComponentes.Contains("Clear")
                     )
                 {
                     TB_AC_VALUE_DEC.Dispatcher.Invoke(delegate { TB_AC_VALUE_DEC.Text = _PH1_Emulator.Valor_AC.ToString(); });
@@ -188,7 +209,6 @@ namespace PH1
                     Line_ACw.Dispatcher.Invoke(delegate { Line_ACw.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
                 }
 
-
                 if (_PH1_Emulator.logs.getstring_UC.Contains("RDM <- AC"))
                 {
                     Line_ACr.Dispatcher.Invoke(delegate { Line_ACr.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
@@ -196,14 +216,12 @@ namespace PH1
                     Line_RDMw.Dispatcher.Invoke(delegate { Line_RDMw.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
                 }
 
-
                 if (_PH1_Emulator.logs.getstring_UC.Contains("9 - MEM["))
                 {
                     Line_MEMw.Dispatcher.Invoke(delegate { Line_MEMw.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
                     Line_REMw1.Dispatcher.Invoke(delegate { Line_REMw1.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
 
                 }
-
 
                 if (_PH1_Emulator.logs.getstring_UC.Contains("AC <- AC + ") ||
                     _PH1_Emulator.logs.getstring_UC.Contains("AC <- AC - ") ||
@@ -242,8 +260,6 @@ namespace PH1
                 LB_logInstructions.Dispatcher.Invoke(delegate { LB_logInstructions.Items.Add(_PH1_Emulator.logs.getstring_Instrucoes); });
 
 
-
-
                 InstrucoesExecutadas += 1;
                 LB_LogInsutrucoes.Dispatcher.Invoke(delegate { LB_LogInsutrucoes.Content = "Total de " + InstrucoesExecutadas + " instruções executadas."; });
             }
@@ -261,6 +277,8 @@ namespace PH1
             LB_logInstructions.Dispatcher.Invoke(delegate { LB_logInstructions.SelectedIndex = LB_logInstructions.Items.Count - 1; });
             LB_logInstructions.Dispatcher.Invoke(delegate { LB_logInstructions.ScrollIntoView(LB_logInstructions.SelectedItem); });
         }
+
+        #region Funções auxiliares color
 
         private void ActiveBarramentoA()
         {
@@ -348,9 +366,59 @@ namespace PH1
 
         }
 
-        //ManualResetEvent serve para colocar estados de sinalização nos Threads, ou seja 
-        ManualResetEvent mrse = new ManualResetEvent(false);
+        #endregion
 
+
+        /// <summary>
+        /// Atualiza o datagrid da mémoria de acordo com a memória
+        /// </summary>
+        private void atualizaMemoria()
+        {
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("Endereço", typeof(string));
+            dt.Columns.Add("Valor16", typeof(string));
+            dt.Columns.Add("Valor10", typeof(string));
+            dt.Columns.Add("Valor2", typeof(string));
+            //dt.Columns.Add("Instrução", typeof(string));
+            for (int i = 0; i <= 255; i++)
+            {
+                DataRow row = dt.NewRow();
+                row["Endereço"] = i;
+                row["Valor16"] = _PH1_Emulator._MEM[i].ToString("X2");
+                row["Valor10"] = _PH1_Emulator._MEM[i].ToString();
+                row["Valor2"] = Convert.ToString(_PH1_Emulator._MEM[i], 2).PadLeft(8, '0');
+                //row["Instrução"] =  AssemblerSrc.Controle.Memory[i].ToString("X2");
+                dt.Rows.Add(row);
+            }
+
+            DT_Memory.Dispatcher.Invoke(delegate { DT_Memory.ItemsSource = ""; });
+            DT_Memory.Dispatcher.Invoke(delegate { DT_Memory.ItemsSource = dt.DefaultView; });
+            atualizaRowMemoria();
+        }
+
+        private void atualizaRowMemoria()
+        {
+            if (row != null)
+            {
+                row.Dispatcher.Invoke(delegate { row.Background = new SolidColorBrush(Color.FromRgb(240, 240, 240)); });
+            }
+
+            row = (DataGridRow)DT_Memory.ItemContainerGenerator.ContainerFromIndex(_PH1_Emulator.Valor_PC);
+
+            if (row != null)
+            {
+
+                DT_Memory.Dispatcher.Invoke(delegate { DT_Memory.SelectedItem = row; });
+                //DT_Memory.Dispatcher.Invoke(delegate { DT_Memory.ScrollIntoView(row); });
+                //row.Dispatcher.Invoke(delegate { row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next)); });
+                row.Dispatcher.Invoke(delegate { row.Background = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+            }
+        }
+
+        /// <summary>
+        /// Thread que roda ciclico, simulando o PH1
+        /// </summary>
         private void CyclicPH1()
         {
             while (true)
@@ -363,11 +431,8 @@ namespace PH1
                 //Envia clock para Unidade de controle do PH1.
                 _PH1_Emulator.Clock = true;
 
-
-
-
                 //Coloca o Thread para dormir, enviando o argumento do tempo em milessegundos.
-                System.Threading.Thread.Sleep(100);
+                System.Threading.Thread.Sleep(10);
 
                 //Subtrai o tempo atual do tempo armazenado no inicio do laço, assim sabemos o tempo que levou para percorrer um ciclo do loop.
                 LB_CyclicTimeThreadPH1.Dispatcher.Invoke(delegate { LB_CyclicTimeThreadPH1.Content = (DateTime.Now - DT_ThreadPH1).ToString(); });
@@ -381,6 +446,8 @@ namespace PH1
             }
 
         }
+
+        #region Eventos da tela Simulador 
 
         //Evento do CheckBox que ativa ou desativa o log na tela.
         private void CB_AtivaDesativaLogComponentes_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -404,19 +471,6 @@ namespace PH1
                     CB_AtivaDesativaLogComponentes.IsChecked = true;
                 }
             }
-        }
-
-        private void BT_ComponenteMEM_Click(object sender, RoutedEventArgs e)
-        {
-            WindowTabelaMemoria = new PH1src.TabelaMemoria(_PH1_Emulator._MEM);
-            WindowTabelaMemoria.Show();
-        }
-
-        void Window_Closing(object sender, CancelEventArgs e)
-        {
-            ThreadPH1.Abort();//Encerra o ThreadPH1, só por precaução, mas ele deve fechar, pois roda em background ou seja, quando o Thread principal fechar ele encerra sozinho.          
-
-            WindowTabelaMemoria.Close(); //Fecha a Window que mostra a memória, pois ele esta sempre aberta, somente é escondida enquanto executa o programa.
         }
 
         private void CB_AtivaDesativaLogUnidadeControle_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -454,20 +508,14 @@ namespace PH1
 
         private void BT_StopPH1_Click(object sender, RoutedEventArgs e)
         {
-            //
+            Clear();
             mrse.Reset();
-            byte[] MEM = new byte[256];
-            _PH1_Emulator._MEM = MEM;
-            InstrucoesExecutadas = 0;
-        }
-
-        private void LB_logComponentes_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
-        {
-
         }
 
         private void BT_LoadArchive_Click(object sender, RoutedEventArgs e)
         {
+            Clear();
+
             OpenFileDialog Ofp = new OpenFileDialog();
             Ofp.Title = "Abra o Arquivo de Texto";
             Ofp.Filter = "Arquivos TXT (*.txt)|*.txt|All files (*.*)|*.*";
@@ -521,6 +569,7 @@ namespace PH1
                     {
                         valor = byte.Parse(stringdummy, System.Globalization.NumberStyles.HexNumber);
                         _PH1_Emulator._MEM[endereco] = valor;
+                        atualizaMemoria();
                     }
 
                 }
@@ -542,8 +591,9 @@ namespace PH1
             }
         }
 
+        #endregion
 
-
+        #region Eventos na tela Assembler
 
         void propertyGridComboBoxSelectionChanged(object sender, RoutedEventArgs e)
         {
@@ -596,6 +646,7 @@ namespace PH1
         }
 
         #region Folding
+
         FoldingManager foldingManager;
         object foldingStrategy;
 
@@ -644,15 +695,16 @@ namespace PH1
 
         void UpdateFoldings()
         {
-           // if (foldingStrategy is BraceFoldingStrategy)
-           // {
-           //     ((BraceFoldingStrategy)foldingStrategy).UpdateFoldings(foldingManager, textEditor.Document);
-           // }
+            // if (foldingStrategy is BraceFoldingStrategy)
+            // {
+            //     ((BraceFoldingStrategy)foldingStrategy).UpdateFoldings(foldingManager, textEditor.Document);
+            // }
             if (foldingStrategy is XmlFoldingStrategy)
             {
                 ((XmlFoldingStrategy)foldingStrategy).UpdateFoldings(foldingManager, textEditor.Document);
             }
         }
+
         #endregion
 
         private void BT_Assemble_Click(object sender, RoutedEventArgs e)
@@ -711,25 +763,27 @@ namespace PH1
 
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        /// Link: https://docs.microsoft.com/en-us/dotnet/api/system.globalization.numberformatinfo?redirectedfrom=MSDN&view=netcore-3.1
-        public static String ToBinary(Byte[] data)
-        {
-            return string.Join(" ", data.Select(byt => Convert.ToString(byt, 2).PadLeft(8, '0')));
-        }
-
-        public static byte[] ConvertToByteArray(string str, Encoding encoding)
-        {
-            return encoding.GetBytes(str);
-        }
-
         private void BT_LoadToSim_Click(object sender, RoutedEventArgs e)
         {
+            Clear();
             _PH1_Emulator._MEM = AssemblerSrc.Controle.Memory;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Limpa memória do PH1, limpa logs, reseta instruções executadas.
+        /// </summary>
+        private void Clear()
+        {
+            _PH1_Emulator.ClearUC();
+            LB_logComponentes.Items.Clear();
+            LB_logInstructions.Items.Clear();
+            LB_logUnidadeControle.Items.Clear();
+
+            InstrucoesExecutadas = 0;
+            LB_LogInsutrucoes.Dispatcher.Invoke(delegate { LB_LogInsutrucoes.Content = "Total de " + InstrucoesExecutadas + " instruções executadas."; });
+
         }
     }
 }

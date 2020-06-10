@@ -41,7 +41,6 @@ C:\Users\Maycon\Source\Repos\mayconlutz\ph1_emulator\ICSharpCode.AvalonEdit\obj\
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\bin\Debug\net45\ICSharpCode.AvalonEdit.dll
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\bin\Debug\net45\ICSharpCode.AvalonEdit.pdb
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\bin\Debug\net45\ICSharpCode.AvalonEdit.xml
-C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\net45\ICSharpCode.AvalonEdit.csprojAssemblyReference.cache
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\net45\GeneratedInternalTypeHelper.g.cs
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\net45\ICSharpCode.AvalonEdit_MarkupCompile.cache
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\net45\ICSharpCode.AvalonEdit_MarkupCompile.lref
@@ -52,9 +51,9 @@ C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.Av
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\net45\TextEditor.baml
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\net45\themes\generic.baml
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\net45\ICSharpCode.AvalonEdit.g.resources
-C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\net45\ICSharpCode.AvalonEdit.csproj.CoreCompileInputs.cache
-C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\net45\ICSharpCode.AvalonEdit.sourcelink.json
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\net45\ICSharpCode.AvalonEdit.AssemblyInfoInputs.cache
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\net45\ICSharpCode.AvalonEdit.AssemblyInfo.cs
+C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\net45\ICSharpCode.AvalonEdit.csproj.CoreCompileInputs.cache
+C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\net45\ICSharpCode.AvalonEdit.sourcelink.json
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\net45\ICSharpCode.AvalonEdit.dll
 C:\Users\Maycon\source\repos\mayconlutz\ph1_emulator\PH1_Emulator\ICSharpCode.AvalonEdit\obj\Debug\net45\ICSharpCode.AvalonEdit.pdb
