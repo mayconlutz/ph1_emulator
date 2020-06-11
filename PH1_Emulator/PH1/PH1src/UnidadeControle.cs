@@ -106,8 +106,7 @@ namespace PH1.PH1src
                     }
                     else if (Opcode == typeInstrutions.HLT) //Se RI== 'HLT'(HLT)
                     {
-                        throw new NotImplementedException();
-
+                        logs.AddUC = "4 - Ir p/ 0 e PAUSE";
                         logs.AddInstrucoes = "HLT";
                     }
                     break;

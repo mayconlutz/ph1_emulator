@@ -7,11 +7,35 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Copy.png" />
+    <None Remove="Cut.png" />
+    <None Remove="Delete.png" />
+    <None Remove="Open.png" />
+    <None Remove="Paste.png" />
+    <None Remove="Redo.png" />
+    <None Remove="Save.png" />
+    <None Remove="Undo.png" />
+    <None Remove="WordWrap.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ICSharpCode.AvalonEdit\ICSharpCode.AvalonEdit.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="PH1src\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Copy.png" />
+    <Resource Include="Cut.png" />
+    <Resource Include="Delete.png" />
+    <Resource Include="Open.png" />
+    <Resource Include="Paste.png" />
+    <Resource Include="Redo.png" />
+    <Resource Include="Save.png" />
+    <Resource Include="Undo.png" />
+    <Resource Include="WordWrap.png" />
   </ItemGroup>
 
 </Project>

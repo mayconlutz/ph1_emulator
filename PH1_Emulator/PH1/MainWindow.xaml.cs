@@ -43,21 +43,16 @@ namespace PH1
         //ManualResetEvent serve para colocar estados de sinalização nos Threads, ou seja 
         ManualResetEvent mrse = new ManualResetEvent(false);
 
-        bool HabilitaLogComponentes;
-        bool HabilitaLogUC;
+        //Variáveis auxiliares
         bool HabilitaDebugClock;
         int InstrucoesExecutadas = 0;
-
-        PH1src.TabelaMemoria WindowTabelaMemoria;
+        int TimeSleepThread = 0;
+        bool MemoryAdressDecOrHex = false; //false = HEX, true = DEC
 
         DataGridRow row;
 
         public MainWindow()
         {
-            //codeBox.InitializeComponent();
-
-            //codeBox.CurrentHighlighter = HighlighterManager.Instance.Highlighters["VHDL"];
-
             InitializeComponent();
 
             //Instânciando o controle do PH1.
@@ -65,27 +60,13 @@ namespace PH1
             //Criando evento que verifica quando tem algum log do controle do PH1.
             _PH1_Emulator.logs.PropertyChanged += Logs_PropertyChanged;
 
-            //teste
-            byte[] MEM = new byte[256];
-            MEM[0x0] = 0x10;
-            MEM[0x1] = 0x81;
-            MEM[0x2] = 0x30;
-            MEM[0x3] = 0x82;
-            MEM[0x4] = 0x20;
-            MEM[0x5] = 0x80;
-            MEM[0x6] = 0xF0;
-            MEM[0x80] = 0x00;
-            MEM[0x81] = 0x05;
-            MEM[0x82] = 0x02;
-
-            _PH1_Emulator._MEM = MEM;
 
             //Instânciando o Thread e passando alguns parâmetros necessários;
             ThreadPH1 = new System.Threading.Thread(CyclicPH1);
             ThreadPH1.Name = "Clock PH1";
             ThreadPH1.IsBackground = true;
             ThreadPH1.Start();
-
+            
             //Desativa os barramentos
             DesactiveLines();
 
@@ -108,9 +89,7 @@ namespace PH1
         {
             //Adiciona a string no listbox de log dos componentes.
 
-            CB_AtivaDesativaLogComponentes.Dispatcher.Invoke(delegate { HabilitaLogComponentes = (bool)CB_AtivaDesativaLogComponentes.IsChecked; });
-
-            if (HabilitaLogComponentes && e.PropertyName.Equals("Modificou Log Componentes"))
+            if (e.PropertyName.Equals("Modificou Log Componentes"))
             {
                 LB_logComponentes.Dispatcher.Invoke(delegate { LB_logComponentes.Items.Add(_PH1_Emulator.logs.getComponentes); });
 
@@ -153,9 +132,7 @@ namespace PH1
 
             }
 
-            CB_AtivaDesativaLogUnidadeControle.Dispatcher.Invoke(delegate { HabilitaLogUC = (bool)CB_AtivaDesativaLogUnidadeControle.IsChecked; });
-
-            if (HabilitaLogUC && e.PropertyName.Equals("Modificou Log UC"))
+            if (e.PropertyName.Equals("Modificou Log UC"))
             {
                 LB_logUnidadeControle.Dispatcher.Invoke(delegate { LB_logUnidadeControle.Items.Add(_PH1_Emulator.logs.getstring_UC); });
 
@@ -384,7 +361,15 @@ namespace PH1
             for (int i = 0; i <= 255; i++)
             {
                 DataRow row = dt.NewRow();
-                row["Endereço"] = i;
+                if (!MemoryAdressDecOrHex)
+                {
+                    row["Endereço"] = i.ToString("X2");
+                }
+                else
+                {
+                    row["Endereço"] = i;
+                }
+                
                 row["Valor16"] = _PH1_Emulator._MEM[i].ToString("X2");
                 row["Valor10"] = _PH1_Emulator._MEM[i].ToString();
                 row["Valor2"] = Convert.ToString(_PH1_Emulator._MEM[i], 2).PadLeft(8, '0');
@@ -432,10 +417,10 @@ namespace PH1
                 _PH1_Emulator.Clock = true;
 
                 //Coloca o Thread para dormir, enviando o argumento do tempo em milessegundos.
-                System.Threading.Thread.Sleep(10);
+                System.Threading.Thread.Sleep(TimeSleepThread);
 
                 //Subtrai o tempo atual do tempo armazenado no inicio do laço, assim sabemos o tempo que levou para percorrer um ciclo do loop.
-                LB_CyclicTimeThreadPH1.Dispatcher.Invoke(delegate { LB_CyclicTimeThreadPH1.Content = (DateTime.Now - DT_ThreadPH1).ToString(); });
+                LB_CyclicTimeThreadPH1.Dispatcher.Invoke(delegate { LB_CyclicTimeThreadPH1.Content = "Último Ciclo: " + (DateTime.Now - DT_ThreadPH1).TotalSeconds.ToString() + "ms"; });
 
 
                 CB_DebugClock.Dispatcher.Invoke(delegate { HabilitaDebugClock = (bool)CB_DebugClock.IsChecked; });
@@ -448,53 +433,6 @@ namespace PH1
         }
 
         #region Eventos da tela Simulador 
-
-        //Evento do CheckBox que ativa ou desativa o log na tela.
-        private void CB_AtivaDesativaLogComponentes_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            if ((bool)CB_AtivaDesativaLogComponentes.IsChecked)
-            {
-                MessageBoxResult result = MessageBox.Show("Desativando o Log dos componentes, o sistema não irá mais gravar os logs!", "Desativar Logs dos Componentes", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-                if (result == MessageBoxResult.Yes)
-                {
-                    CB_AtivaDesativaLogComponentes.IsChecked = false;
-                }
-
-            }
-            else
-            {
-                MessageBoxResult result = MessageBox.Show("Ativando o Log dos componentes, o sistema irá consumir mais memória RAM!", "Ativar Logs dos Componentes", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-                if (result == MessageBoxResult.Yes)
-                {
-                    CB_AtivaDesativaLogComponentes.IsChecked = true;
-                }
-            }
-        }
-
-        private void CB_AtivaDesativaLogUnidadeControle_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            if ((bool)CB_AtivaDesativaLogUnidadeControle.IsChecked)
-            {
-                MessageBoxResult result = MessageBox.Show("Desativando o Log da UC, o sistema não irá mais gravar os logs!", "Desativar Logs da Unidade de Controle", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-                if (result == MessageBoxResult.Yes)
-                {
-                    CB_AtivaDesativaLogUnidadeControle.IsChecked = false;
-                }
-
-            }
-            else
-            {
-                MessageBoxResult result = MessageBox.Show("Ativando o Log da UC, o sistema irá consumir mais memória RAM!", "Ativar Logs da Unidade de Controle", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-                if (result == MessageBoxResult.Yes)
-                {
-                    CB_AtivaDesativaLogUnidadeControle.IsChecked = true;
-                }
-            }
-        }
 
         private void BT_PausePH1_Click(object sender, RoutedEventArgs e)
         {
@@ -573,21 +511,6 @@ namespace PH1
                     }
 
                 }
-            }
-        }
-
-        private void TB_Clock_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (!char.IsControl((char)e.Key) && !char.IsDigit((char)e.Key) &&
-             ((char)e.Key != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if (((char)e.Key == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
             }
         }
 
@@ -767,6 +690,7 @@ namespace PH1
         {
             Clear();
             _PH1_Emulator._MEM = AssemblerSrc.Controle.Memory;
+            atualizaMemoria();
         }
 
         #endregion
@@ -784,6 +708,35 @@ namespace PH1
             InstrucoesExecutadas = 0;
             LB_LogInsutrucoes.Dispatcher.Invoke(delegate { LB_LogInsutrucoes.Content = "Total de " + InstrucoesExecutadas + " instruções executadas."; });
 
+        }
+
+        private void SliderTimeSleep_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            TimeSleepThread = (int)SliderTimeSleep.Value;
+
+            TB_ActualValueSleep.Text = TimeSleepThread.ToString() + "ms";
+
+        }
+
+        private void BT_Hex_Dec_Memory_Click(object sender, RoutedEventArgs e)
+        {
+            MemoryAdressDecOrHex = !MemoryAdressDecOrHex;
+            if (MemoryAdressDecOrHex)
+            {
+                BT_Hex_Dec_Memory.Content = "DEC";
+            }
+            else
+            {
+                BT_Hex_Dec_Memory.Content = "HEX";
+            }
+
+
+            atualizaMemoria();
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            ThreadPH1.Interrupt();
         }
     }
 }
