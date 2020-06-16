@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+
+<SyntaxDefinition name="Assembly" extensions=".asm" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+	<Color name="Comment" foreground="Green" exampleText="' comment" />
+	<Color name="String" exampleText="text = &quot;Hello, World!&quot;" />
+
+	<Color name="DataTypes" foreground="#FF6F002F" exampleText="byte" />
+	<Color name="Keywords" foreground="Green" exampleText="text data" />
+	<Color name="Instructions" foreground="Blue" exampleText="CInt(a)" />
+
+	<Property name="DocCommentMarker" value="'''" />
+
+	<RuleSet ignoreCase="true">
+		<Span color="Comment">
+			<Begin>'</Begin>
+		</Span>
+		<Keywords color="DataTypes">
+			<Word>Byte</Word>
+		</Keywords>
+		<Keywords color="Keywords">
+			<Word>text</Word>
+      <Word>data</Word>    
+		</Keywords>
+		<Keywords color="Instructions">
+			<Word>NOP</Word>
+			<Word>LDR</Word>
+			<Word>STR</Word>
+			<Word>ADD</Word>
+			<Word>SUB</Word>
+			<Word>MUL</Word>
+			<Word>DIV</Word>
+			<Word>NOT</Word>
+			<Word>AND</Word>
+			<Word>OR</Word>
+			<Word>XOR</Word>
+			<Word>JMP</Word>
+			<Word>JEQ</Word>
+			<Word>JG</Word>
+			<Word>JL</Word>
+			<Word>HLT</Word>
+		</Keywords>
+	</RuleSet>
+</SyntaxDefinition>

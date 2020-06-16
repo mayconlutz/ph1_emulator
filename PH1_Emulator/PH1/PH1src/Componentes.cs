@@ -404,6 +404,7 @@ namespace PH1.PH1src
             _Valor_RDM = 0;
             _Valor_REM = 0;
             _logs.AddComponentes = "Clear";
+            _logs.ClearCountComponentes = true;
 
         }
 

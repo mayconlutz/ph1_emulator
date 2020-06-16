@@ -15,6 +15,14 @@ namespace PH1.PH1src
         string string_Instrucoes = "";
         int countItem = 0;
 
+        public bool ClearCountComponentes
+        {
+            set
+            {
+                countItem = 0;
+            }
+        }
+
         /// <summary>
         /// Adiciona item de controle dos componentes
         /// </summary>

@@ -78,6 +78,18 @@ namespace PH1
             TB_AC_VALUE_HEX.Dispatcher.Invoke(delegate { TB_AC_VALUE_HEX.Text = "0x" + _PH1_Emulator.Valor_AC.ToString("X2"); });
             TB_AC_VALUE_BIN.Dispatcher.Invoke(delegate { TB_AC_VALUE_BIN.Text = Convert.ToString(_PH1_Emulator.Valor_AC, 2).PadLeft(8, '0'); });
 
+            TB_RI_VALUE_DEC.Dispatcher.Invoke(delegate { TB_RI_VALUE_DEC.Text = _PH1_Emulator._BarramentoRI.ToString(); });
+            TB_RI_VALUE_HEX.Dispatcher.Invoke(delegate { TB_RI_VALUE_HEX.Text = "0x" + _PH1_Emulator._BarramentoRI.ToString("X2"); });
+            TB_RI_VALUE_BIN.Dispatcher.Invoke(delegate { TB_RI_VALUE_BIN.Text = Convert.ToString(_PH1_Emulator._BarramentoRI, 2).PadLeft(8, '0'); });
+
+            TB_RDM_VALUE_DEC.Dispatcher.Invoke(delegate { TB_RDM_VALUE_DEC.Text = _PH1_Emulator.Valor_RDM.ToString(); });
+            TB_RDM_VALUE_HEX.Dispatcher.Invoke(delegate { TB_RDM_VALUE_HEX.Text = "0x" + _PH1_Emulator.Valor_RDM.ToString("X2"); });
+            TB_RDM_VALUE_BIN.Dispatcher.Invoke(delegate { TB_RDM_VALUE_BIN.Text = Convert.ToString(_PH1_Emulator.Valor_RDM, 2).PadLeft(8, '0'); });
+
+            TB_REM_VALUE_DEC.Dispatcher.Invoke(delegate { TB_REM_VALUE_DEC.Text = _PH1_Emulator.Valor_REM.ToString(); });
+            TB_REM_VALUE_HEX.Dispatcher.Invoke(delegate { TB_REM_VALUE_HEX.Text = "0x" + _PH1_Emulator.Valor_REM.ToString("X2"); });
+            TB_REM_VALUE_BIN.Dispatcher.Invoke(delegate { TB_REM_VALUE_BIN.Text = Convert.ToString(_PH1_Emulator.Valor_REM, 2).PadLeft(8, '0'); });
+
         }
         
         /// <summary>
@@ -126,6 +138,39 @@ namespace PH1
                     TB_AC_VALUE_DEC.Dispatcher.Invoke(delegate { TB_AC_VALUE_DEC.Text = _PH1_Emulator.Valor_AC.ToString(); });
                     TB_AC_VALUE_HEX.Dispatcher.Invoke(delegate { TB_AC_VALUE_HEX.Text = "0x" + _PH1_Emulator.Valor_AC.ToString("X2"); });
                     TB_AC_VALUE_BIN.Dispatcher.Invoke(delegate { TB_AC_VALUE_BIN.Text = Convert.ToString(_PH1_Emulator.Valor_AC, 2).PadLeft(8, '0'); });
+                }
+
+
+                if (_PH1_Emulator.logs.getComponentes.Contains("ACw Executado - Valor AC <- Barramento A") ||
+                    _PH1_Emulator.logs.getComponentes.Contains("ACc Executado - Valor AC <- Barramento C") ||
+                    _PH1_Emulator.logs.getComponentes.Contains("Clear")
+                    )
+                {
+                    TB_AC_VALUE_DEC.Dispatcher.Invoke(delegate { TB_AC_VALUE_DEC.Text = _PH1_Emulator.Valor_AC.ToString(); });
+                    TB_AC_VALUE_HEX.Dispatcher.Invoke(delegate { TB_AC_VALUE_HEX.Text = "0x" + _PH1_Emulator.Valor_AC.ToString("X2"); });
+                    TB_AC_VALUE_BIN.Dispatcher.Invoke(delegate { TB_AC_VALUE_BIN.Text = Convert.ToString(_PH1_Emulator.Valor_AC, 2).PadLeft(8, '0'); });
+                }
+
+
+                if (_PH1_Emulator.logs.getComponentes.Contains("RIw Executado - Barramento RI <- Barramento A"))
+                {
+                    TB_RI_VALUE_DEC.Dispatcher.Invoke(delegate { TB_RI_VALUE_DEC.Text = _PH1_Emulator._BarramentoRI.ToString(); });
+                    TB_RI_VALUE_HEX.Dispatcher.Invoke(delegate { TB_RI_VALUE_HEX.Text = "0x" + _PH1_Emulator._BarramentoRI.ToString("X2"); });
+                    TB_RI_VALUE_BIN.Dispatcher.Invoke(delegate { TB_RI_VALUE_BIN.Text = Convert.ToString(_PH1_Emulator._BarramentoRI, 2).PadLeft(8, '0'); });
+                }
+
+                if (_PH1_Emulator.logs.getComponentes.Contains("RDMw Executado - Valor RDM <- Barramento A"))
+                {
+                    TB_RDM_VALUE_DEC.Dispatcher.Invoke(delegate { TB_RDM_VALUE_DEC.Text = _PH1_Emulator.Valor_RDM.ToString(); });
+                    TB_RDM_VALUE_HEX.Dispatcher.Invoke(delegate { TB_RDM_VALUE_HEX.Text = "0x" + _PH1_Emulator.Valor_RDM.ToString("X2"); });
+                    TB_RDM_VALUE_BIN.Dispatcher.Invoke(delegate { TB_RDM_VALUE_BIN.Text = Convert.ToString(_PH1_Emulator.Valor_RDM, 2).PadLeft(8, '0'); });
+                }
+
+                if (_PH1_Emulator.logs.getComponentes.Contains("REMw Executado - Valor REM <- Barramento A"))
+                {
+                    TB_REM_VALUE_DEC.Dispatcher.Invoke(delegate { TB_REM_VALUE_DEC.Text = _PH1_Emulator.Valor_REM.ToString(); });
+                    TB_REM_VALUE_HEX.Dispatcher.Invoke(delegate { TB_REM_VALUE_HEX.Text = "0x" + _PH1_Emulator.Valor_REM.ToString("X2"); });
+                    TB_REM_VALUE_BIN.Dispatcher.Invoke(delegate { TB_REM_VALUE_BIN.Text = Convert.ToString(_PH1_Emulator.Valor_REM, 2).PadLeft(8, '0'); });
                 }
 
                 #endregion
@@ -228,6 +273,11 @@ namespace PH1
                     Line_RDMr.Dispatcher.Invoke(delegate { Line_RDMr.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
                     ActiveBarramentoA();
                     Line_PCw.Dispatcher.Invoke(delegate { Line_PCw.Stroke = new SolidColorBrush(Color.FromRgb(0, 220, 0)); });
+                }
+
+                if (_PH1_Emulator.logs.getstring_UC.Contains("4 - Ir p/ 0 e PAUSE"))
+                {
+                    mrse.Reset();
                 }
 
             }

@@ -53,6 +53,7 @@ namespace ICSharpCode.AvalonEdit.Highlighting
 			hlm.RegisterHighlighting("TeX", new[] { ".tex" }, "Tex-Mode.xshd");
 			hlm.RegisterHighlighting("TSQL", new[] { ".sql" }, "TSQL-Mode.xshd");
 			hlm.RegisterHighlighting("VB", new[] { ".vb" }, "VB-Mode.xshd");
+			hlm.RegisterHighlighting("Assembly", new[] { ".asm" }, "Assembly.xshd");
 			hlm.RegisterHighlighting("XML", (".xml;.xsl;.xslt;.xsd;.manifest;.config;.addin;" +
 											 ".xshd;.wxs;.wxi;.wxl;.proj;.csproj;.vbproj;.ilproj;" +
 											 ".booproj;.build;.xfrm;.targets;.xaml;.xpt;" +
