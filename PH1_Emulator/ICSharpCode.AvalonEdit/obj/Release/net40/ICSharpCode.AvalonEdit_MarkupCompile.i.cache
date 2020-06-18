@@ -16,5 +16,5 @@ TRACE;RELEASE;NETFRAMEWORK;NET40
 19-1688406659
 CodeCompletion\CompletionList.xaml;CodeCompletion\InsightWindow.xaml;Search\DropDownButton.xaml;Search\SearchPanel.xaml;TextEditor.xaml;themes\generic.xaml;
 
-True
+False
 
